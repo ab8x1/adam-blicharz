@@ -1,4 +1,5 @@
 import {Component } from 'react';
+import withTranslation from 'next-translate/withTranslation';
 import { Link } from 'react-scroll';
 import onClickOutside from "react-onclickoutside";
 import {MenuItem, MenuItems, MenuToogler, Bar} from '../styles/navbarStyles';
@@ -23,6 +24,7 @@ class NavToogle extends Component{
     };
     render(){
         const {menu} = this.state;
+        const { t } = this.props.i18n
         return(
             <>
             <MenuToogler open={menu} onClick={this.toogleMenu}>
@@ -33,12 +35,12 @@ class NavToogle extends Component{
             <MenuItems open={menu}>
                 <MenuItem>
                     <Link onClick={this.closeMenu} activeClass="active" to="skills" spy={true} smooth={true} offset={-67} duration={500}>
-                        Umiejętności
+                        {t('common:Skills')}
                     </Link>
                 </MenuItem>
                 <MenuItem>
                     <Link onClick={this.closeMenu} activeClass="active" to="projects" spy={true} smooth={true} offset={-67} duration={500}>
-                        Moje Projekty
+                        {t('common:Projects')}
                     </Link>
                 </MenuItem>
                 <MenuItem>
@@ -48,7 +50,7 @@ class NavToogle extends Component{
                 </MenuItem>
                 <MenuItem>
                     <Link onClick={this.closeMenu} activeClass="active" to="contact" spy={true} smooth={true} offset={-67} duration={500}>
-                        Kontakt
+                        {t('common:Contact')}
                     </Link>
                 </MenuItem>
             </MenuItems>
@@ -58,4 +60,4 @@ class NavToogle extends Component{
 }
 
 
-export default onClickOutside(NavToogle);
+export default withTranslation(onClickOutside(NavToogle));

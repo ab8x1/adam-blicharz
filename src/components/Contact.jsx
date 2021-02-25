@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import { useForm } from "react-hook-form";
 import Snackbar from '@material-ui/core/Snackbar';
+import useTranslation from 'next-translate/useTranslation';
 import MuiAlert from '@material-ui/lab/Alert';
 import {LoadingSpinner} from '../styles/loaderStyles';
 import {Title, Input, Button, ContactSection, Inputs, Labels, TextInput, ErrorMessage, ContactInfo} from '../styles/contactStyles';
@@ -10,6 +11,7 @@ function Alert(props) {
 }
 
 const Contact = props => {
+    const { t } = useTranslation('common');
     const [snackBar, setSnackBar] = useState({open: false, status: null});
     const { register, handleSubmit, errors, reset } = useForm();
     const onSubmit = async (formData) => {
@@ -34,16 +36,16 @@ const Contact = props => {
         setSnackBar({...snackBar, open: false});
     }
     const errorMessages = {
-        required: '* To pole jest wymagane',
-        pattern: '* Zły adres email'
+        required: t('RequierdField'),
+        pattern: t('InvaliEmail')
     }
     return(
         <ContactSection>
-            <Title>Skontaktuj się ze mną</Title>
+            <Title>{t('ContactMe')}</Title>
             <Inputs onSubmit={handleSubmit(onSubmit)}>
                 <Input error={errors.name}>
                     <Labels>
-                        Imię
+                        {t('Name')}
                         <ErrorMessage>{errors.name && errorMessages[errors.name.type]}</ErrorMessage>
                     </Labels>
                     <input name="name" id="name" type="text" ref={register({ required: true })} />
@@ -65,19 +67,19 @@ const Contact = props => {
                       })}/>
                 </Input>
                 <Labels>
-                    Wiadomość
+                    {t('Message')}
                     <ErrorMessage>{errors.text && errorMessages[errors.text.type]}</ErrorMessage>
                 </Labels>
                 <TextInput error={errors.text} name="text" ref={register({ required: true })} />
-                <Button> {snackBar.status === 'loading' ? <LoadingSpinner/> : 'Wyślij'} </Button>
+                <Button> {snackBar.status === 'loading' ? <LoadingSpinner/> : t('Send')} </Button>
             </Inputs>
             <ContactInfo>contact@adamblicharz.com</ContactInfo>
             <Snackbar open={snackBar.open} autoHideDuration={5000} onClose={closeSnackbar}>
                 <Alert onClose={closeSnackbar} severity={snackBar.status === 'success' ? 'success' : 'error'}>
                     {
                         snackBar.status === 'success'
-                        ? 'Wiadomość wysłana poprawnie'
-                        : 'Błąd wysyłania wiadomości'
+                        ?   t('SendSuccess')
+                        :   t('SendError')
                     }
                 </Alert>
             </Snackbar>

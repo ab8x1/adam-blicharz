@@ -1,5 +1,6 @@
 import {useContext} from 'react';
 import {GlobalContext} from'./App';
+import useTranslation from 'next-translate/useTranslation';
 import { useInView } from 'react-intersection-observer';
 import {motion} from 'framer-motion';
 import styled from 'styled-components';
@@ -35,6 +36,7 @@ const Button = styled.a`
 `;
 
 const GitHub = props => {
+    const { t } = useTranslation('common');
     const {indexScroll} = useContext(GlobalContext);
     const [ref, inView] = useInView({
         threshold: 0.6,
@@ -50,7 +52,7 @@ const GitHub = props => {
     return(
         <GitHubSection ref={ref}>
             <GitContainer className="container">
-                <h2 style={{textAlign: 'center', marginBottom: '40px'}}>Sprawdź mojego GitHuba</h2>
+                <h2 style={{textAlign: 'center', marginBottom: '40px'}}>{t('GitHub')}</h2>
                 <motion.div {...fadeLeft}>
                     <Button href="https://github.com/adam-blicharz" target="blank"> GitHub <img src="/github.png" alt=""/> </Button>
                 </motion.div>

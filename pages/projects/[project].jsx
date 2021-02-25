@@ -7,9 +7,11 @@ import Stack from '../../src/components/Stack';
 import Head from 'next/head';
 import {BackButton, Content, ProjectSection, Title, Gallery, ShowWebsite} from '../../src/styles/singleProjectStyles';
 import ImageGallery from 'react-image-gallery';
+import useTranslation from 'next-translate/useTranslation';
 import "react-image-gallery/styles/css/image-gallery.css";
 
 const Project = ({name, description, url, stack, images, otherRoutes}) => {
+  const { t } = useTranslation('common');
   const {indexScroll} = useContext(GlobalContext);
   const router = useRouter();
   const handleBack = () => {
@@ -23,11 +25,11 @@ const Project = ({name, description, url, stack, images, otherRoutes}) => {
       </Head>
       <ProjectSection className="container">
           <ProjectArrows prev={otherRoutes?.prev} next={otherRoutes?.next}/>
-          <BackButton onClick={handleBack}><img src="/back.png" alt=""/>Wróc na strone główną</BackButton>
+          <BackButton onClick={handleBack}><img src="/back.png" alt=""/>{t('Return')}</BackButton>
           <Title>
             {name}
             <ShowWebsite href={url} target="blank">
-              Zobacz Stronę
+              {t('CheckSite')}
               <img src="/www.png" alt=""/>
             </ShowWebsite>
           </Title>
