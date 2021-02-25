@@ -1,0 +1,56 @@
+import Link from 'next/link';
+import styled from 'styled-components';
+
+const Arrow = styled.div`
+    position: fixed;
+    display: none;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    cursor: pointer;
+    &:hover label{
+        display: block;
+    }
+    @media(min-width: 992px){
+        display: block;
+    }
+`;
+
+const ArrowContainer = styled.div`
+    position: relative;
+    & label{
+        display: none;
+        position: absolute;
+        background-color: rgba(0,0,0,0.8);
+        color: white;
+        width: 100px;
+        top: -70px;
+        padding: 10px;
+        font-size: 0.8rem;
+        text-align: center;
+        border-radius: 10px;
+    }
+`;
+
+const ProjectArrows = ({prev, next}) => {
+    return(<>
+        <Arrow style={{left: '10px'}}>
+            <ArrowContainer>
+            <Link href="/projects/[project]" as={`/projects/${prev}`}><a>
+                <img src="/back.png" alt=""/>
+            </a></Link>
+            <label style={{left: '5px'}}>Poprzedni Projekt</label>
+            </ArrowContainer>
+        </Arrow>
+        <Arrow style={{right: '10px'}}>
+            <ArrowContainer>
+            <Link href="/projects/[project]" as={`/projects/${next}`}><a>
+                <img src="/forth.png" alt=""/>
+            </a></Link>
+            <label style={{right: '5px'}}>Następny projekt</label>
+            </ArrowContainer>
+        </Arrow>
+    </>)
+}
+
+export default ProjectArrows;

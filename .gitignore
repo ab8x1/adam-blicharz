@@ -12,6 +12,10 @@
 /.next/
 /out/
 
+public/
+Projects_JSONS/
+.env.local
+
 # production
 /build
 
