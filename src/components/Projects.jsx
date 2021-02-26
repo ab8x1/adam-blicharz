@@ -30,21 +30,21 @@ const Projects = props => {
             <ProjectsAnimation indexScroll={indexScroll} inView={inView} mobile={mobile} del={0.3}>
                 <Project>
                     <ProjectImg> <img src="/langbox.png" alt="" alt=""/> </ProjectImg>
-                    <p>Anglojęzyczna platforma do nauki języka hiszpańskiego Langbox</p>
+                    <p>{t('LbDesc')}</p>
                     <Button value="langbox" onClick={viewProject}>{t('Details')}</Button>
                 </Project>
             </ProjectsAnimation>
             <ProjectsAnimation indexScroll={indexScroll} inView={inView} mobile={mobile} del={0.37}>
                     <Project>
                         <ProjectImg> <img src="/sm-nauczyciel.png" alt="" alt=""/> </ProjectImg>
-                        <p>Strona spółdzielni mieszkaniowej Nauczyciel w Policach</p>
+                        <p>{t('SmDesc')}</p>
                         <Button value="sm-nauczyciel" onClick={viewProject}>{t('Details')}</Button>
                     </Project>
                 </ProjectsAnimation>
                 <ProjectsAnimation indexScroll={indexScroll} inView={inView} mobile={mobile} del={0.42}>
                     <Project>
                         <ProjectImg> <img src="/langkick.png" alt="" alt=""/> </ProjectImg>
-                        <p>Strona z aplikacją webową do nauki języków obcych LangKick</p>
+                            <p>{t('LkDesc')}</p>
                         <Button value="langkick" onClick={viewProject}>{t('Details')}</Button>
                     </Project>
                 </ProjectsAnimation>

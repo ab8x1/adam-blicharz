@@ -41,7 +41,7 @@ const ProjectArrows = ({prev, next}) => {
             <Link href="/projects/[project]" as={`/projects/${prev}`}><a>
                 <img src="/back.png" alt=""/>
             </a></Link>
-            <label style={{left: '5px'}}>{t('NextProject')}</label>
+            <label style={{left: '5px'}}>{t('PreviousProject')}</label>
             </ArrowContainer>
         </Arrow>
         <Arrow style={{right: '10px'}}>
@@ -49,7 +49,7 @@ const ProjectArrows = ({prev, next}) => {
             <Link href="/projects/[project]" as={`/projects/${next}`}><a>
                 <img src="/forth.png" alt=""/>
             </a></Link>
-            <label style={{right: '5px'}}>{t('PreviousProject')}</label>
+            <label style={{right: '5px'}}>{t('NextProject')}</label>
             </ArrowContainer>
         </Arrow>
     </>)

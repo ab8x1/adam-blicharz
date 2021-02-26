@@ -74,20 +74,18 @@ export async function getStaticPaths() {
   };
 }
 
-const PROJECT_QUERY = `query MyQuery($route: String) {
-  project(filter: {route: {eq: $route}}) {
-    imgs
-    name
-    route
-    stack
-    url
-    description
-  }
-}`;
-
-export async function getStaticProps({ params }) {
-  console.log('run static props--------------------------------------');
+export async function getStaticProps({locale, params}) {
   const route = params.project;
+  const PROJECT_QUERY = `query MyQuery($route: String) {
+    project(filter: {route: {eq: $route}}, locale: ${locale}) {
+      imgs
+      name
+      route
+      stack
+      url
+      description
+    }
+  }`;
   const { project } = await request({
     query: PROJECT_QUERY,
     variables: { route }

@@ -58,7 +58,6 @@ const Skills = () => {
                             <img src="/devops.png" alt=""/>
                         </Title>
                             <p>{t('DevOpsStack')}</p>
-                            <Stack>Hostingu na:</Stack>
                             <p>Digital Ocean</p>
                             <p>Heroku</p>
                             <p>Mydevil</p>
