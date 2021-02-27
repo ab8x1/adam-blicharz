@@ -27,27 +27,27 @@ const Projects = props => {
         <ProjectsSection className="container">
             <Title>{t('ActualProjects')}</Title>
             <ProjectsContainer ref={ref}>
-            <ProjectsAnimation indexScroll={indexScroll} inView={inView} mobile={mobile} del={0.3}>
-                <Project>
-                    <ProjectImg> <img src="/langbox.png" alt="" alt=""/> </ProjectImg>
-                    <p>{t('LbDesc')}</p>
-                    <Button value="langbox" onClick={viewProject}>{t('Details')}</Button>
-                </Project>
-            </ProjectsAnimation>
-            <ProjectsAnimation indexScroll={indexScroll} inView={inView} mobile={mobile} del={0.37}>
+                <ProjectsAnimation indexScroll={indexScroll} inView={inView} mobile={mobile} del={0.37}>
+                        <Project>
+                            <ProjectImg> <img src="/sm-nauczyciel.png" alt="" alt=""/> </ProjectImg>
+                            <p>{t('SmDesc')}</p>
+                            <Button value="sm-nauczyciel" onClick={viewProject}>{t('Details')}</Button>
+                        </Project>
+                    </ProjectsAnimation>
+                <ProjectsAnimation indexScroll={indexScroll} inView={inView} mobile={mobile} del={0.3}>
                     <Project>
-                        <ProjectImg> <img src="/sm-nauczyciel.png" alt="" alt=""/> </ProjectImg>
-                        <p>{t('SmDesc')}</p>
-                        <Button value="sm-nauczyciel" onClick={viewProject}>{t('Details')}</Button>
+                        <ProjectImg> <img src="/langbox.png" alt="" alt=""/> </ProjectImg>
+                        <p>{t('LbDesc')}</p>
+                        <Button value="langbox" onClick={viewProject}>{t('Details')}</Button>
                     </Project>
                 </ProjectsAnimation>
-                <ProjectsAnimation indexScroll={indexScroll} inView={inView} mobile={mobile} del={0.42}>
-                    <Project>
-                        <ProjectImg> <img src="/langkick.png" alt="" alt=""/> </ProjectImg>
-                            <p>{t('LkDesc')}</p>
-                        <Button value="langkick" onClick={viewProject}>{t('Details')}</Button>
-                    </Project>
-                </ProjectsAnimation>
+                    <ProjectsAnimation indexScroll={indexScroll} inView={inView} mobile={mobile} del={0.42}>
+                        <Project>
+                            <ProjectImg> <img src="/langkick.png" alt="" alt=""/> </ProjectImg>
+                                <p>{t('LkDesc')}</p>
+                            <Button value="langkick" onClick={viewProject}>{t('Details')}</Button>
+                        </Project>
+                    </ProjectsAnimation>
             </ProjectsContainer>
         </ProjectsSection>
     )

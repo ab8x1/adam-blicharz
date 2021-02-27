@@ -32,35 +32,31 @@ const Skills = () => {
                             <p>Frontend</p>
                             <img src="/frontend.png" alt=""/>
                         </Title>
-                        <p>{t('FrontendStack')}</p>
                         <Stack>HTML</Stack>
                         <Stack>CSS</Stack>
-                        <p>Bootstrap</p>
+                        <Stack>Bootstrap</Stack>
                         <Stack>JS</Stack>
-                        <p>React</p>
-                        <p>NextJs</p>
-                        <p>JQuery</p>
+                        <Stack>React</Stack>
+                        <Stack>NextJs</Stack>
+                        <Stack>JQuery</Stack>
                     </Skill>
                     <Skill>
                         <Title>
                             <p>Backend</p>
                             <img src="/backend.png" alt=""/>
                         </Title>
-                        <p>{t('BackendStack')}</p>
                         <Stack>NodeJs</Stack>
-                        <p>Express</p>
+                        <Stack>Express</Stack>
                         <Stack>MongoDB</Stack>
                         <Stack>MySQL</Stack>
+                        <Stack>Websockets</Stack>
                     </Skill>
                     <Skill>
                         <Title>
                             <p>DevOps</p>
                             <img src="/devops.png" alt=""/>
                         </Title>
-                            <p>{t('DevOpsStack')}</p>
-                            <p>Digital Ocean</p>
-                            <p>Heroku</p>
-                            <p>Mydevil</p>
+                            <Stack>Digital Ocean</Stack>
                             <Stack>Ubuntu</Stack>
                             <Stack>Nginx</Stack>
                             <Stack>Certbot</Stack>
