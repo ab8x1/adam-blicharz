@@ -1,20 +1,14 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-export const AboutMeSection = styled.section`
+export const Wrapper = styled(motion.div)`
     position: relative;
     display: flex;
-    align-items: center;
-    width: 100%;
+    flex-direction: column;
     padding: 15vh 0 10px 0;
     @media(min-width: 992px){
         padding-top 120px;
     }
-`;
-
-export const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
 `;
 
 export const ImageConatiner = styled(motion.div)`

@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import {motion} from 'framer-motion';
+import { Element } from 'react-scroll';
 
-export const SkillsSection = styled.section`
+export const SkillsContainer = styled(Element)`
     position: relative;
     width: 100%;
     padding: 45px 0 10px 0;
@@ -10,7 +12,7 @@ export const SkillsSection = styled.section`
     }
 `;
 
-export const SkillsContent = styled.div`
+export const SkillsContent = styled(motion.div)`
     display: grid;
     grid-template-columns: 100fr;
     border-radius: 20px;

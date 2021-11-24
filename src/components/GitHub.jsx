@@ -4,8 +4,9 @@ import useTranslation from 'next-translate/useTranslation';
 import { useInView } from 'react-intersection-observer';
 import {motion} from 'framer-motion';
 import styled from 'styled-components';
+import { Element } from 'react-scroll';
 
-const GitHubSection = styled.section`
+const GitHubBackground = styled(Element)`
     padding: 85px 0;
     background-color: rgb(56,72,92);
 `;
@@ -51,14 +52,14 @@ const GitHub = props => {
     }
 
     return(
-        <GitHubSection ref={ref}>
-            <GitContainer className="container">
+        <GitHubBackground name="github">
+            <GitContainer className="container" ref={ref}>
                 <h2 style={{textAlign: 'center', marginBottom: '40px'}}>{t('GitHub')}</h2>
                 <motion.div {...fadeLeft}>
                     <Button href="https://github.com/adam-blicharz" target="blank"> GitHub <img src="/github.png" alt=""/> </Button>
                 </motion.div>
             </GitContainer>
-        </GitHubSection>
+        </GitHubBackground>
     )
 }
 

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { Element } from 'react-scroll';
 
-export const ProjectsSection = styled.section`
+export const ProjectsContainer = styled(Element)`
     margin: 0 auto;
     padding: 50px 15px 10px 15px;
     @media(min-width: 768px){
@@ -17,7 +18,7 @@ export const Title = styled.h2`
     }
 `;
 
-export const ProjectsContainer = styled.div`
+export const ProjectsContent = styled.div`
     display: grid;
     grid-template-columns: 100fr;
     gap: 30px;

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { Element } from 'react-scroll';
 
-export const ContactSection = styled.section`
+export const ContactContainer = styled(Element)`
     background-color: #081229;
     padding: 80px 15px 30px 15px;
     color: white;

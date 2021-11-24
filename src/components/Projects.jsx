@@ -5,7 +5,7 @@ import {GlobalContext} from'./App';
 import ProjectsAnimation from './ProjectsAnimation';
 import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
-import {ProjectsSection, Button, Project, ProjectImg, ProjectsContainer, Title} from '../styles/projectsStyles';
+import {ProjectsContainer, Button, Project, ProjectImg, Title, ProjectsContent} from '../styles/projectsStyles'; 
 
 const Projects = props => {
     const { t } = useTranslation('common');
@@ -25,9 +25,9 @@ const Projects = props => {
         router.push(`/projects/[project]` ,`/projects/${target.value}`).then(() => window.scrollTo(0, 0));
     }
     return(
-        <ProjectsSection className="container">
+        <ProjectsContainer name="projects" className="container">
             <Title>{t('ActualProjects')}</Title>
-            <ProjectsContainer ref={ref}>
+            <ProjectsContent ref={ref}>
                 <ProjectsAnimation indexScroll={indexScroll} inView={inView} mobile={mobile} del={0.37}>
                         <Project>
                             <ProjectImg> <Image src="/sm-nauczyciel.png" layout="fill" objectFit="contain"/> </ProjectImg>
@@ -49,8 +49,8 @@ const Projects = props => {
                             <Button value="froog" onClick={viewProject}>{t('Details')}</Button>
                         </Project>
                     </ProjectsAnimation>
-            </ProjectsContainer>
-        </ProjectsSection>
+            </ProjectsContent>
+        </ProjectsContainer>
     )
 }
 

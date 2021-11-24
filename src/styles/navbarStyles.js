@@ -86,6 +86,9 @@ export const MenuItem = styled.li`
     & a:hover{
         color: #f3f169;
     }
+    &:last-of-type{
+        border-bottom: none;
+    }
     @media (min-width: 992px) {
         width: auto;
         border-bottom: none;

@@ -2,7 +2,7 @@ import {useContext} from 'react';
 import {GlobalContext} from'./App';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import {AboutMeSection, Wrapper, Title, ImageConatiner} from '../styles/aboutMeStyles';
+import {Wrapper, Title, ImageConatiner} from '../styles/aboutMeStyles';
 
 const stagger = {
     hidden: {},
@@ -34,25 +34,21 @@ const fadePhoto = {
 const AboutMe = () => {
     const {indexScroll} = useContext(GlobalContext);
     return(
-        <AboutMeSection>
-            <Wrapper className="container">
-                <motion.div variants={stagger} initial={indexScroll ? 'show' : 'hidden'} animate='show'>
-                    <div style={{overflow: 'hidden'}}>
-                        <Title variants={fadeText}>
-                            Adam Blicharz
-                        </Title>
-                    </div>
-                    <div style={{overflow: 'hidden'}}>
-                        <Title variants={fadeText}>
-                            Fullstack JavaScript Developer
-                        </Title>
-                    </div>
-                    <ImageConatiner variants={fadePhoto}> 
-                        <Image priority src="/me-450w.jpg" width={450} height={478}/>
-                    </ImageConatiner>
-                </motion.div>
-            </Wrapper>
-        </AboutMeSection>
+        <Wrapper className="container"variants={stagger} initial={indexScroll ? 'show' : 'hidden'} animate='show'>
+            <div style={{overflow: 'hidden'}}>
+                <Title variants={fadeText}>
+                    Adam Blicharz
+                </Title>
+            </div>
+            <div style={{overflow: 'hidden'}}>
+                <Title variants={fadeText}>
+                    Fullstack JavaScript Developer
+                </Title>
+            </div>
+            <ImageConatiner variants={fadePhoto}> 
+                <Image priority src="/me-450w.jpg" width={450} height={478}/>
+            </ImageConatiner>
+        </Wrapper>
     )
 }
 

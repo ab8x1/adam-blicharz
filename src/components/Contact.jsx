@@ -4,7 +4,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import useTranslation from 'next-translate/useTranslation';
 import MuiAlert from '@material-ui/lab/Alert';
 import {LoadingSpinner} from '../styles/loaderStyles';
-import {Title, Input, Button, ContactSection, Inputs, Labels, TextInput, ErrorMessage, ContactInfo} from '../styles/contactStyles';
+import {Title, Input, Button, ContactContainer, Inputs, Labels, TextInput, ErrorMessage, ContactInfo} from '../styles/contactStyles';
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -44,7 +44,7 @@ const Contact = props => {
     }
     
     return(
-        <ContactSection>
+        <ContactContainer name="contact">
             <Title>{t('ContactMe')}</Title>
             <Inputs onSubmit={handleSubmit(onSubmit)}>
                 <Input error={errors.name}>
@@ -87,7 +87,7 @@ const Contact = props => {
                     }
                 </Alert>
             </Snackbar>
-        </ContactSection>
+        </ContactContainer>
     )
 }
 
