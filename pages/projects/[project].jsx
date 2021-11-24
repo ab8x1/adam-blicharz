@@ -17,6 +17,16 @@ const fadeIn = {
   transition: {duration: 0.3, ease: "easeInOut"}
 }
 
+const renderSlide = img => 
+  <div className='image-gallery-image'>
+    <Image
+      src={img.original}
+      width={900}
+      height={505}
+      priority
+    />
+  </div>
+
 const Project = ({name, description, url, stack, images, otherRoutes}) => {
   const { t } = useTranslation('common');
   const {indexScroll} = useContext(GlobalContext);
@@ -50,6 +60,7 @@ const Project = ({name, description, url, stack, images, otherRoutes}) => {
               showThumbnails={false}
               showFullscreenButton={false}
               autoPlay
+              renderItem={renderSlide}
               slideInterval={4000}/>
           </Gallery>
           <Stack {...stack} />
