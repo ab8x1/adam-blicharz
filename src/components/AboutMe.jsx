@@ -48,7 +48,7 @@ const AboutMe = () => {
                         </Title>
                     </div>
                     <ImageConatiner variants={fadePhoto}> 
-                        <Image src="/me-450w.jpg" width={450} height={478}/>
+                        <Image priority src="/me-450w.jpg" width={450} height={478}/>
                     </ImageConatiner>
                 </motion.div>
             </Wrapper>
