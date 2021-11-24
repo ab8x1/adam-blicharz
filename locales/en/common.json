@@ -5,10 +5,10 @@
   "FrontendStack": "On the frontend I use:",
   "BackendStack": "To create backend I make use of:",
   "DevOpsStack": "When publishing website I work with:",
-  "ActualProjects": "Actual Projects",
+  "ActualProjects": "Current projects",
   "Details": "Details",
-  "GitHub": "Check out My GitHub",
-  "ContactMe": "Contact With Me",
+  "GitHub": "Check out my GitHub",
+  "ContactMe": "Contact me",
   "Name": "Name",
   "Message": "Message",
   "Send": "Send",
@@ -21,6 +21,6 @@
   "NextProject": "Next Project",
   "PreviousProject": "Previous Project",
   "LbDesc": "A free platform for learning languages",
-  "LkDesc": "A Web3 Talent Platform with jobs and gigs offers",
+  "LkDesc": "A Web3 Talent Platform with jobs and gig offers",
   "SmDesc": "The official site of the housing association \"Sm Nauczyciel\""
 }
