@@ -18,7 +18,7 @@ const Projects = props => {
     });
     useEffect( () => {
         setMobile(window.innerWidth <= 991 ? true : false);
-        ['langkick', 'langbox', 'sm-nauczyciel'].map(project => router.prefetch('/projects/[project]', `/projects/${project}`));
+        ['froog', 'langbox', 'sm-nauczyciel'].map(project => router.prefetch('/projects/[project]', `/projects/${project}`));
     }, []);
     const viewProject = ({target}) => {
         setIndexScroll(window.scrollY);
