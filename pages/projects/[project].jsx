@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import otherProjects from '../../src/helpers/otherRoutes';
 import ProjectArrows from '../../src/components/ProjectArrows';
 import Stack from '../../src/components/Stack';
-import Image from 'next/image';
 import Head from 'next/head';
 import {BackButton, Content, ProjectSection, Title, Gallery, ShowWebsite} from '../../src/styles/singleProjectStyles';
 import ImageGallery from 'react-image-gallery';
@@ -17,31 +16,21 @@ const fadeIn = {
   transition: {duration: 0.3, ease: "easeInOut"}
 }
 
-const renderSlide = img => 
-  <div className='image-gallery-image'>
-    <Image
-      src={img.original}
-      width={900}
-      height={505}
-      priority
-    />
-  </div>
-
-const Project = ({name, description, url, stack, images, otherRoutes}) => {
+const Project = ({name, description, url, stack, imgs, otherRoutes}) => {
   const { t } = useTranslation('common');
   const {indexScroll} = useContext(GlobalContext);
   const router = useRouter();
   const handleBack = () => {
     router.push('/').then(() => window.scrollTo(0, indexScroll));
   }
-  const slides = images.map(img => ({original: img}));
+  const slides = imgs.map(img => ({original: img}));
   const {prev, next} = otherRoutes;
 
   return(
       <>
       <Head>
         <title>Projekty - Adam Blicharz</title>
-        <link rel="preload" as="image" href={`http://localhost:3000/${images?.[0]}`}/>
+        <link rel="preload" as="image" href={`${process.env.NEXT_PUBLIC_APP}/${imgs?.[0]}`}/>
       </Head>
       <ProjectSection className="container">
           <ProjectArrows prev={prev} next={next}/>
@@ -60,7 +49,6 @@ const Project = ({name, description, url, stack, images, otherRoutes}) => {
               showThumbnails={false}
               showFullscreenButton={false}
               autoPlay
-              renderItem={renderSlide}
               slideInterval={4000}/>
           </Gallery>
           <Stack {...stack} />
@@ -109,21 +97,13 @@ export async function getStaticProps({locale, params}) {
     query: PROJECT_QUERY,
     variables: { route }
   });
-  // Duplicated because it's not possible yet to pass additional data from paths to props
-  // const { allProjects } = await request({
-  //   query: ROUTES_QUERY
-  // });
   const allProjects = [{route: 'sm-nauczyciel'}, {route: 'langbox'}, {route: 'froog'}];
   const {prev, next} = otherProjects(route, allProjects);
   return {
     props: {
       key: route,
-      name: project['name'],
-      description: project['description'],
-      url: project['url'],
-      stack: project['stack'],
-      images: project['imgs'],
-      otherRoutes: {prev, next}
+      otherRoutes: {prev, next},
+      ...project
     }
   }
 }
