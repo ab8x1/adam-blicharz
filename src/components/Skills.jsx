@@ -4,6 +4,8 @@ import {GlobalContext} from'./App';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import {Skill, SkillsContent, SkillsSection, Title, Stack} from '../styles/skillsStyles';
+import skills from '../consts/skills';
+import Image from 'next/image';
 
 const animationVariants = {
     hidden: { opacity: 0, y: 200 },
@@ -27,42 +29,21 @@ const Skills = () => {
               transition = {{duration: 0.4, ease: "easeInOut", delay: 1}}
             >
                 <SkillsContent className="container">
-                    <Skill>
-                        <Title>
-                            <p>Frontend</p>
-                            <img src="/frontend.png" alt=""/>
-                        </Title>
-                        <Stack>HTML</Stack>
-                        <Stack>CSS</Stack>
-                        <Stack>Bootstrap</Stack>
-                        <Stack>JS</Stack>
-                        <Stack>React</Stack>
-                        <Stack>NextJs</Stack>
-                        <Stack>JQuery</Stack>
-                    </Skill>
-                    <Skill>
-                        <Title>
-                            <p>Backend</p>
-                            <img src="/backend.png" alt=""/>
-                        </Title>
-                        <Stack>NodeJs</Stack>
-                        <Stack>Express</Stack>
-                        <Stack>MongoDB</Stack>
-                        <Stack>MySQL</Stack>
-                        <Stack>Websockets</Stack>
-                    </Skill>
-                    <Skill>
-                        <Title>
-                            <p>DevOps</p>
-                            <img src="/devops.png" alt=""/>
-                        </Title>
-                            <Stack>Digital Ocean</Stack>
-                            <Stack>Ubuntu</Stack>
-                            <Stack>Nginx</Stack>
-                            <Stack>Certbot</Stack>
-                            <Stack>Google Analytics</Stack>
-                            <Stack>Google Search Console</Stack>
-                    </Skill>
+                    {
+                        skills.map(({type, stack}) =>
+                            <Skill key={type}>
+                                <Title>
+                                    <p>{type}</p>
+                                    <Image src={`/${type}.png`} height={64} width={64}/>
+                                </Title>
+                                {
+                                    stack.map(tech =>
+                                        <Stack key={tech}>{tech}</Stack>
+                                    )
+                                }
+                            </Skill>
+                        )
+                    }
                 </SkillsContent>
             </motion.div>
         </SkillsSection>

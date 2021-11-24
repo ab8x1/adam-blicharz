@@ -1,11 +1,11 @@
 {
   "Skills": "Umiejętności",
-  "Projects": "Moje Projekty",
+  "Projects": "Projekty",
   "Contact": "Kontakt",
   "FrontendStack": "Na Frontendzie posługuję się:",
   "BackendStack": "Do tworzenia backendu wykorzystuję:",
   "DevOpsStack": "Publikując stronę korzystam z:",
-  "ActualProjects": "Moje Aktualne Projekty",
+  "ActualProjects": "Aktualne Projekty",
   "Details": "Szczegóły",
   "GitHub": "Sprawdź mojego GitHuba",
   "ContactMe": "Skontaktuj się ze mną",
@@ -20,7 +20,7 @@
   "CheckSite": "Zobacz Stronę",
   "NextProject": "Następny Projekt",
   "PreviousProject": "Poprzedni Projekt",
-  "LbDesc": "Anglojęzyczna platforma do nauki języka hiszpańskiego Langbox",
-  "LkDesc": "Strona z aplikacją webową do nauki języków obcych LangKick",
+  "LbDesc": "Platforma do nauki języków obcych",
+  "LkDesc": "Strona z ofertami pracy w środowisku Web3.",
   "SmDesc": "Strona spółdzielni mieszkaniowej Nauczyciel w Policach"
 }

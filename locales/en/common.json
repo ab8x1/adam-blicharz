@@ -1,11 +1,11 @@
 {
   "Skills": "Skills",
-  "Projects": "My Projects",
+  "Projects": "Projects",
   "Contact": "Contact",
   "FrontendStack": "On the frontend I use:",
   "BackendStack": "To create backend I make use of:",
   "DevOpsStack": "When publishing website I work with:",
-  "ActualProjects": "Current Projects",
+  "ActualProjects": "Actual Projects",
   "Details": "Details",
   "GitHub": "Check out My GitHub",
   "ContactMe": "Contact With Me",
@@ -20,7 +20,7 @@
   "CheckSite": "View Site",
   "NextProject": "Next Project",
   "PreviousProject": "Previous Project",
-  "LbDesc": "A free platform for Spanish learners with blog and web app",
-  "LkDesc": "Website for learning multiple foreign languages",
+  "LbDesc": "A free platform for learning languages",
+  "LkDesc": "A Web3 Talent Platform with jobs and gigs offers",
   "SmDesc": "The official site of the housing association \"Sm Nauczyciel\""
 }

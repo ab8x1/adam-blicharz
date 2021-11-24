@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Image from 'next/image';
 
 const StackWrapper = styled.div`
     display: grid;
@@ -7,22 +8,25 @@ const StackWrapper = styled.div`
     margin: 50px 0;
     @media(min-width: 992px){
         grid-template-columns: 33fr 33fr 33fr;
+        gap: 25px;
     }
 `;
 
 const StackCol = styled.div`
-    border: 3px solid rgb(96,112,132);
-    padding: 35px 25px;
+    border: 3px solid white;
+    padding: 20px 25px;
     border-radius: 10px;
     & h3{
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 10px 0;
+        padding: 0;
     }
     & img{
-        margin-left: 20px;
         width: 50px;
+    }
+    & span{
+        margin-right: 20px;
     }
     & ul{
         list-style: none;
@@ -44,19 +48,19 @@ const Stack = ({frontend, backend, devops}) => {
     return(
         <StackWrapper>
             <StackCol>
-                <h3>Frontend <img src="/frontend.png" alt=""/></h3>
+                <h3><span>Frontend</span> <Image src="/frontend.png" width={50} height={50}/></h3>
                 <ul>{
                     frontend?.map((front, i) => <li key={`${i}.${front}`}>{front}</li>)
                 }</ul>
             </StackCol>
             <StackCol>
-                <h3>Backend <img src="/backend.png" alt=""/></h3>
+                <h3><span>Backend</span> <Image src="/backend.png" width={50} height={50}/></h3>
                 <ul>{
                     backend?.map((front, i) => <li key={`${i}.${front}`}>{front}</li>)
                 }</ul>
             </StackCol>
             <StackCol>
-                <h3>DevOps <img src="/devops.png" alt=""/></h3>
+                <h3><span>DevOps</span> <Image src="/devops.png" width={50} height={50}/></h3>
                 <ul>{
                     devops?.map((front, i) => <li key={`${i}.${front}`}>{front}</li>)
                 }</ul>

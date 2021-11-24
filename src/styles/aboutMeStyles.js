@@ -17,14 +17,14 @@ export const Wrapper = styled.div`
     flex-direction: column;
 `;
 
-export const Image = styled(motion.img)`
-    display: block;
-    width: 230px;
-    height: 244px;
+export const ImageConatiner = styled(motion.div)`
+    width: 290px;
     margin: auto;
     margin-top: 30px;
-    border-radius: 20px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.26);
+    & img{
+        border-radius: 20px;
+    }
     @media(min-width: 992px){
         width: 420px;
         height: 446px;

@@ -14,7 +14,8 @@ const Contact = props => {
     const { t } = useTranslation('common');
     const [snackBar, setSnackBar] = useState({open: false, status: null});
     const { register, handleSubmit, errors, reset } = useForm();
-    const onSubmit = async (formData) => {
+    
+    const onSubmit = async formData => {
         setSnackBar({...snackBar, status: 'loading'});
         const res = await fetch('/api/email', {
             method: 'POST',
@@ -31,14 +32,17 @@ const Contact = props => {
             setSnackBar({open: true, status: 'failed'});
         }
     };
+
     const closeSnackbar = () => {
         if(snackBar.status === 'success') reset();
         setSnackBar({...snackBar, open: false});
     }
+
     const errorMessages = {
         required: t('RequierdField'),
         pattern: t('InvaliEmail')
     }
+    
     return(
         <ContactSection>
             <Title>{t('ContactMe')}</Title>

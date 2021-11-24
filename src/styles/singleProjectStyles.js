@@ -12,23 +12,28 @@ export const BackButton = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 11px 0;
-    width: 245px;
+    padding: 11px 20px;
     font-size: 0.95rem;
     background-color: transparent;
     color: white;
-    border: solid rgb(96,112,132);
-    border-width: 2px 2px 5px 2px;
-    border-radius: 8px;
+    border: 3px solid white;
+    font-weight: bold;
+    border-radius: 10px;
     outline: none;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
     & img{
         width: 20px;
         margin-right: 5px;
+        filter: invert(1);
     }
     &:hover{
-        border-width: 2px;
-        margin-top: 3px;
+        color: black;
+        background-color: white;
+        transform: scale(1.03);
+        & img{
+            filter: none
+        }
     }
 `;
 
@@ -38,11 +43,11 @@ export const ShowWebsite = styled.a`
     font-size: 1rem;
     font-weight: normal;
     margin-left: 30px;
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    padding: 7px 20px;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+    padding: 7px 25px;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
     & img{
         width: 35px;
         margin-left: 10px;
@@ -70,7 +75,7 @@ export const Gallery = styled.div`
     max-height: 505px;
     margin: 50px auto 50px auto;
     overflow: hidden;
-    border: 1px solid lightgray;
+    border-radius: 10px;
     @media(min-width: 768px){
         height: 388px;
         & img{

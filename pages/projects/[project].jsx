@@ -18,13 +18,14 @@ const Project = ({name, description, url, stack, images, otherRoutes}) => {
     router.push('/').then(() => window.scrollTo(0, indexScroll));
   }
   const slides = images.map(img => ({original: img}));
+  const {prev, next} = otherRoutes;
   return(
       <>
       <Head>
         <title>Projekty - Adam Blicharz</title>
       </Head>
       <ProjectSection className="container">
-          <ProjectArrows prev={otherRoutes?.prev} next={otherRoutes?.next}/>
+          <ProjectArrows prev={prev} next={next}/>
           <BackButton onClick={handleBack}><img src="/back.png" alt=""/>{t('Return')}</BackButton>
           <Title>
             {name}
@@ -60,15 +61,13 @@ const ROUTES_QUERY = `query MyQuery {
   }
 }`;
 
-const langs = ['en', 'pl'];
-
 export async function getStaticPaths() {
   const { allProjects } = await request({
     query: ROUTES_QUERY
   });
   const paths = allProjects.reduce((acc, {route}) =>
-    [...acc || [], { params: { project: route }, locale: 'en' }, { params: { project: route }, locale: 'pl' }]
-  ,[]);
+    [...acc, { params: { project: route }, locale: 'en' }, { params: { project: route }, locale: 'pl' }]
+  , []);
   return {
     paths, fallback: false
   };
@@ -91,9 +90,10 @@ export async function getStaticProps({locale, params}) {
     variables: { route }
   });
   // Duplicated because it's not possible yet to pass additional data from paths to props
-  const { allProjects } = await request({
-    query: ROUTES_QUERY
-  });
+  // const { allProjects } = await request({
+  //   query: ROUTES_QUERY
+  // });
+  const allProjects = [{route: 'sm-nauczyciel'}, {route: 'langbox'}, {route: 'froog'}];
   const {prev, next} = otherProjects(route, allProjects);
   return {
     props: {

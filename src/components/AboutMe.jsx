@@ -1,7 +1,8 @@
 import {useContext} from 'react';
 import {GlobalContext} from'./App';
 import { motion } from 'framer-motion';
-import {AboutMeSection, Wrapper, Title, Image} from '../styles/aboutMeStyles';
+import Image from 'next/image';
+import {AboutMeSection, Wrapper, Title, ImageConatiner} from '../styles/aboutMeStyles';
 
 const stagger = {
     hidden: {},
@@ -46,14 +47,9 @@ const AboutMe = () => {
                             Fullstack JavaScript Developer
                         </Title>
                     </div>
-                    <Image variants={fadePhoto}
-                        srcSet="/me-220w.jpg 220w,
-                                /me-450w.jpg 450w"
-                        sizes="(max-width: 991px) 220px,
-                                450px"
-                        src="/me-450w.jpg"
-                        alt="Adam Blicharz"
-                    />
+                    <ImageConatiner variants={fadePhoto}> 
+                        <Image src="/me-450w.jpg" width={450} height={478}/>
+                    </ImageConatiner>
                 </motion.div>
             </Wrapper>
         </AboutMeSection>

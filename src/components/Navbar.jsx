@@ -3,7 +3,7 @@ import Link from 'next/link';
 import {Nav, NavContainer, NavBrand, NavRight, Languages} from '../styles/navbarStyles';
 import { animateScroll as scroll } from 'react-scroll';
 
-const Navbar = props => {
+export default function Navbar(){
     return(
         <Nav>
             <NavContainer className="container">
@@ -25,5 +25,3 @@ const Navbar = props => {
         </Nav>
     )
 }
-
-export default Navbar;

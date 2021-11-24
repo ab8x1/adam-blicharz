@@ -31,25 +31,30 @@ const ArrowContainer = styled.div`
         text-align: center;
         border-radius: 10px;
     }
+    ${({mirror}) => mirror && `
+        & img{
+            transform: scaleX(-1);
+        }
+    `}
 `;
 
 const ProjectArrows = ({prev, next}) => {
     const { t } = useTranslation('common');
     return(<>
         <Arrow style={{left: '10px'}}>
-            <ArrowContainer>
-            <Link href="/projects/[project]" as={`/projects/${prev}`}><a>
-                <img src="/back.png" alt=""/>
-            </a></Link>
-            <label style={{left: '5px'}}>{t('PreviousProject')}</label>
+            <ArrowContainer mirror>
+                <Link href="/projects/[project]" as={`/projects/${prev}`}><a>
+                    <img src="/forth.png" alt=""/>
+                </a></Link>
+                <label style={{left: '5px'}}>{t('PreviousProject')}</label>
             </ArrowContainer>
         </Arrow>
         <Arrow style={{right: '10px'}}>
             <ArrowContainer>
-            <Link href="/projects/[project]" as={`/projects/${next}`}><a>
-                <img src="/forth.png" alt=""/>
-            </a></Link>
-            <label style={{right: '5px'}}>{t('NextProject')}</label>
+                <Link href="/projects/[project]" as={`/projects/${next}`}><a>
+                    <img src="/forth.png" alt=""/>
+                </a></Link>
+                <label style={{right: '5px'}}>{t('NextProject')}</label>
             </ArrowContainer>
         </Arrow>
     </>)

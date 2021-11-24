@@ -39,6 +39,7 @@ const ProjectsAnimation = ({indexScroll, inView, mobile, del, children}) => {
                 initial="hidden"
                 animate={inView ? 'visible' : 'hidden'}
                 variants={ mobile ? mobileVariant : desktopVariant }
+                style={{height: '100%'}}
             >
                 {children}
             </motion.div>

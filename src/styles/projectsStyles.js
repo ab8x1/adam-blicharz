@@ -31,11 +31,16 @@ export const ProjectsContainer = styled.div`
 export const Project = styled.div`
     position: relative;
     height: 100%;
+    display: grid;
+    grid-template-rows: 100px 1fr 63px;
+    padding: 10px;
+    border: 3px solid #058C9A;
+    border-radius: 15px;
     text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.22) 0px 3px 1px -2px, rgba(0, 0, 0, 0.16) 0px 2px 2px 0px, rgba(0, 0, 0, 0.15) 0px 1px 5px 0px;
-    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.95rem;
     background-color: rgb(56, 72, 92);
-    padding: 30px 15px 35px 15px;
+    padding: 30px 15px 30px 15px;
     overflow: hidden;
     &:hover span{
         opacity: 0.95;
@@ -43,26 +48,30 @@ export const Project = styled.div`
 `;
 
 export const ProjectImg = styled.div`
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 150px;
-    height: 100px;
+    width: 140px;
     margin: 0px auto;
-    & img{
-        width: 100%;
-    }
 `;
 
 export const Button = styled.button`
+    display: block;
     margin: 20px auto 0 auto;
-    padding: 10px 50px;
-    background-color: white;
-    border-radius: 5px;
+    padding: 3px 45px;
+    background-color: #058C9A;
+    border-radius: 10px;
     outline: none;
-    border: none;
+    border: 2px solid #058C9A;
     font-size: 0.95rem;
     text-decoration: none;
     cursor: pointer;
-    color: #33334f;
+    color: white;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+        background-color: white;
+        color: #058C9A;
+        transform: scale(1.04);
+    }
 `;

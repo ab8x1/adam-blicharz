@@ -49,6 +49,7 @@ const GitHub = props => {
         },
         transition: {duration: 0.5, ease: "easeInOut", delay: 0.2}
     }
+
     return(
         <GitHubSection ref={ref}>
             <GitContainer className="container">
