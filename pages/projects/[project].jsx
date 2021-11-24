@@ -4,11 +4,18 @@ import { useRouter } from 'next/router';
 import otherProjects from '../../src/helpers/otherRoutes';
 import ProjectArrows from '../../src/components/ProjectArrows';
 import Stack from '../../src/components/Stack';
+import Image from 'next/image';
 import Head from 'next/head';
 import {BackButton, Content, ProjectSection, Title, Gallery, ShowWebsite} from '../../src/styles/singleProjectStyles';
 import ImageGallery from 'react-image-gallery';
 import useTranslation from 'next-translate/useTranslation';
 import "react-image-gallery/styles/css/image-gallery.css";
+
+const fadeIn = {
+  initial: {opacity: 0},
+  animate : {opacity: 1},
+  transition: {duration: 0.3, ease: "easeInOut"}
+}
 
 const Project = ({name, description, url, stack, images, otherRoutes}) => {
   const { t } = useTranslation('common');
@@ -19,10 +26,12 @@ const Project = ({name, description, url, stack, images, otherRoutes}) => {
   }
   const slides = images.map(img => ({original: img}));
   const {prev, next} = otherRoutes;
+
   return(
       <>
       <Head>
         <title>Projekty - Adam Blicharz</title>
+        <link rel="preload" as="image" href={`http://localhost:3000/${images?.[0]}`}/>
       </Head>
       <ProjectSection className="container">
           <ProjectArrows prev={prev} next={next}/>
@@ -35,7 +44,7 @@ const Project = ({name, description, url, stack, images, otherRoutes}) => {
             </ShowWebsite>
           </Title>
           <Content> {description} </Content>
-          <Gallery>
+          <Gallery {...fadeIn}>
             <ImageGallery
               items={slides}
               showThumbnails={false}

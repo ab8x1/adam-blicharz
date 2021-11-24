@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {motion} from 'framer-motion';
 
 export const ProjectSection = styled.section`
     position: relative;
@@ -70,7 +71,7 @@ export const Content = styled.div`
     text-align: justify;
 `;
 
-export const Gallery = styled.div`
+export const Gallery = styled(motion.div)`
     max-width: 900px;
     max-height: 505px;
     margin: 50px auto 50px auto;
