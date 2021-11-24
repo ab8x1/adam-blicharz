@@ -48,19 +48,19 @@ const Stack = ({frontend, backend, devops}) => {
     return(
         <StackWrapper>
             <StackCol>
-                <h3><span>Frontend</span> <Image src="/frontend.png" width={50} height={50}/></h3>
+                <h3><span>Frontend</span> <Image src="/Frontend.png" width={50} height={50}/></h3>
                 <ul>{
                     frontend?.map((front, i) => <li key={`${i}.${front}`}>{front}</li>)
                 }</ul>
             </StackCol>
             <StackCol>
-                <h3><span>Backend</span> <Image src="/backend.png" width={50} height={50}/></h3>
+                <h3><span>Backend</span> <Image src="/Backend.png" width={50} height={50}/></h3>
                 <ul>{
                     backend?.map((front, i) => <li key={`${i}.${front}`}>{front}</li>)
                 }</ul>
             </StackCol>
             <StackCol>
-                <h3><span>DevOps</span> <Image src="/devops.png" width={50} height={50}/></h3>
+                <h3><span>DevOps</span> <Image src="/DevOps.png" width={50} height={50}/></h3>
                 <ul>{
                     devops?.map((front, i) => <li key={`${i}.${front}`}>{front}</li>)
                 }</ul>
