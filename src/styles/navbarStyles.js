@@ -48,6 +48,8 @@ export const Language = styled.div`
     cursor: pointer;
     & img{
         border-radius: 12px;
+        height: 36px;
+        width: 36px;
     }
     ${({selected}) => selected && `
         &::before{

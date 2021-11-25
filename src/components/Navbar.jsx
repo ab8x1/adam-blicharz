@@ -18,12 +18,12 @@ export default function Navbar(){
                     <Languages>
                         <Language selected={lang === 'en'}>
                             <Link href='/' locale={'en'} scroll={false}>
-                                <Image src="/eng.png" width={36} height={36}/>
+                                <img src="/eng.png" />
                             </Link>
                         </Language>
                         <Language selected={lang === 'pl'} style={{marginLeft: '20px'}}>
                             <Link href='/' locale={'pl'} scroll={false}>
-                                <Image src="/pl.png" width={36} height={36}/>
+                                <img src="/pl.png"/>
                             </Link>
                         </Language>
                     </Languages>
