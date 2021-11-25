@@ -32,17 +32,33 @@ export const NavRight = styled.div`
 `;
 
 export const Languages = styled.div`
+    position: relative;
     display: flex;
     margin: 0;
     order: 1;
-    & img{
-        height: 36px;
-        width: 36px;
-        cursor: pointer;
-    }
     @media (min-width: 992px) {
         order: 2;
     }
+`;
+
+export const Language = styled.div`
+    position: relative;
+    height: 36px;
+    width: 36px;
+    cursor: pointer;
+    & img{
+        border-radius: 12px;
+    }
+    ${({selected}) => selected && `
+        &::before{
+            content: '';
+            position: absolute;
+            left: -7px;
+            right: -7px;
+            bottom: -5px;
+            border-bottom: 2px solid #058C9A;
+        }
+    `}
 `;
 
 export const MenuItems = styled.ul`

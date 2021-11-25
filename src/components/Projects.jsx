@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation'
+import useTranslation from 'next-translate/useTranslation';
 import {useContext, useEffect, useState, memo} from 'react';
 import {GlobalContext} from'./App';
 import ProjectsAnimation from './ProjectsAnimation';
