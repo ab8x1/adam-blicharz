@@ -5,7 +5,7 @@ import {GlobalContext} from'./App';
 import ProjectsAnimation from './ProjectsAnimation';
 import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
-import {ProjectsContainer, Button, Project, ProjectImg, Title, ProjectsContent} from '../styles/projectsStyles'; 
+import {ProjectsContainer, Button, Project, ProjectImg, Title, ProjectsContent} from '../styles/projectsStyles';
 
 const Projects = props => {
     const { t } = useTranslation('common');
@@ -13,7 +13,7 @@ const Projects = props => {
     const router = useRouter();
     const {indexScroll, setIndexScroll} = useContext(GlobalContext);
     const [ref, inView] = useInView({
-        threshold: 0.2,
+        threshold: 0.5,
         triggerOnce: true
     });
     useEffect( () => {

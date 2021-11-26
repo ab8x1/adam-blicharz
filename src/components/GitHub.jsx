@@ -40,7 +40,7 @@ const GitHub = props => {
     const { t } = useTranslation('common');
     const {indexScroll} = useContext(GlobalContext);
     const [ref, inView] = useInView({
-        threshold: 0.6,
+        threshold: 0.8,
         triggerOnce: true
     });
     const fadeLeft = indexScroll ? null : {
