@@ -5,9 +5,11 @@ import { Element } from 'react-scroll';
 export const SkillsContainer = styled(Element)`
     position: relative;
     width: 100%;
-    padding: 45px 0 10px 0;
+    padding: 0 15px;
     background-color: transparent;
-    @media(min-width: 992px){
+    margin-top: -80px;
+    @media(min-width: 768px){
+        margin-top: 30px;
         padding: 50px 0 10px 0;
     }
 `;

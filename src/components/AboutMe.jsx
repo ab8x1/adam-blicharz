@@ -2,7 +2,8 @@ import {useContext} from 'react';
 import {GlobalContext} from'./App';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import {Wrapper, Title, ImageConatiner} from '../styles/aboutMeStyles';
+import {Wrapper, InfoText, ImageConatiner, VisualInfo} from '../styles/aboutMeStyles';
+import StackVisual from './StackVisual';
 
 const stagger = {
     hidden: {},
@@ -34,20 +35,25 @@ const fadePhoto = {
 const AboutMe = () => {
     const {indexScroll} = useContext(GlobalContext);
     return(
-        <Wrapper className="container"variants={stagger} initial={indexScroll ? 'show' : 'hidden'} animate='show'>
-            <div style={{overflow: 'hidden'}}>
-                <Title variants={fadeText}>
-                    Adam Blicharz
-                </Title>
-            </div>
-            <div style={{overflow: 'hidden'}}>
-                <Title variants={fadeText}>
-                    Fullstack JavaScript Developer
-                </Title>
-            </div>
-            <ImageConatiner variants={fadePhoto}> 
-                <Image priority src="/me-450w.jpg" width={450} height={478}/>
-            </ImageConatiner>
+        <Wrapper className="container" variants={stagger} initial={indexScroll ? 'show' : 'hidden'} animate='show'>
+            <InfoText>
+                <div style={{overflow: 'hidden'}}>
+                    <motion.h1 variants={fadeText}>
+                        Adam Blicharz
+                    </motion.h1>
+                </div>
+                <div style={{overflow: 'hidden'}}>
+                    <motion.h2 variants={fadeText}>
+                        Fullstack JavaScript Developer
+                    </motion.h2>
+                </div>
+            </InfoText>
+            <VisualInfo>
+                <ImageConatiner variants={fadePhoto}>
+                    <Image priority src="/me.jpg" layout="fill" objectFit="cover" objectPosition="center" alt="Adam Blicharz"/>
+                </ImageConatiner>
+                <StackVisual/>
+            </VisualInfo>
         </Wrapper>
     )
 }

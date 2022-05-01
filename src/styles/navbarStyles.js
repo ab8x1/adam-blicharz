@@ -2,14 +2,17 @@ import styled from 'styled-components';
 
 export const Nav = styled.nav`
     position: fixed;
+    ${({isActive}) => isActive && `
+        background: rgb(28, 39, 51);
+        border-bottom: 2px solid rgb(23, 33, 43);
+    `};
     z-index: 10;
     top: 0;
     left: 0;
     right: 0;
     color: white;
-    background: rgb(49, 62, 79);
-    box-shadow: 0 1px 10px -6px rgba(0,0,0,.42), 0 1px 10px 0 rgba(0,0,0,.12), 0 4px 5px -2px rgba(0,0,0,0.1);
     user-select: none;
+    transition: background 0.3s ease-in-out;
 `;
 
 export const NavContainer = styled.div`
@@ -21,7 +24,7 @@ export const NavContainer = styled.div`
 
 export const NavBrand = styled.h3`
     cursor: pointer;
-    letterSpacing: 1.7px;
+    letter-spacing: 1.7px;
     padding: 5px;
 `;
 
@@ -29,6 +32,9 @@ export const NavBrand = styled.h3`
 export const NavRight = styled.div`
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 40px;
 `;
 
 export const Languages = styled.div`
@@ -36,7 +42,10 @@ export const Languages = styled.div`
     display: flex;
     margin: 0;
     order: 1;
-    @media (min-width: 992px) {
+    @media (min-width: 768px) {
+        background: rgba(28, 39, 51, 0.6);
+        border-radius: 10px;
+        padding: 5px 20px;
         order: 2;
     }
 `;
@@ -78,7 +87,7 @@ export const MenuItems = styled.ul`
     background-image: linear-gradient(to right bottom, #313e4f, #2c3848, #263241, #212d3a, #1c2733);
     box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.4);
     border-radius: 0 0 10px 10px;
-    @media (min-width: 992px) {
+    @media (min-width: 768px) {
         position: relative;
         top: unset;
         flex-direction: row;
@@ -107,10 +116,11 @@ export const MenuItem = styled.li`
     &:last-of-type{
         border-bottom: none;
     }
-    @media (min-width: 992px) {
+    @media (min-width: 768px) {
         width: auto;
         border-bottom: none;
         margin-left: 15px;
+        background: rgba(28, 39, 51, 0.6);
         & a{
             padding: 10px;
         }
@@ -152,7 +162,7 @@ export const MenuToogler = styled.div`
             }
         `;
     }}
-    @media (min-width: 992px) {
+    @media (min-width: 768px) {
         display: none;
     }
 `;
