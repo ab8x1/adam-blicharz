@@ -45,6 +45,7 @@ export const Input = styled.div`
         width: 100%;
         padding: 5px 10px;
         border-color: ${({error}) => error ? 'red' : 'black'};
+        border-radius: 10px;
     }
 `;
 
@@ -55,6 +56,7 @@ export const TextInput = styled.textarea`
     padding: 5px 10px;
     font-size: 1.1rem;
     border-color: ${({error}) => error ? 'red' : 'black'};
+    border-radius: 10px;
 `;
 
 export const Button = styled.button`

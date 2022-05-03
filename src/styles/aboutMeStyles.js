@@ -20,7 +20,7 @@ export const InfoText = styled.div`
     & h1{
         font-size: 1em;
         line-height: 2.1rem;
-        margin: 1rem 0 0.2rem 0;
+        margin: 1.5rem 0 0.2rem 0;
     }
     & h2{
         font-size: 0.85em;
@@ -72,16 +72,22 @@ export const ImageConatiner = styled(motion.div)`
         height: 700px;
         max-height: 700px;
     }
+    @media(min-width: 1921px){
+        max-width: 706px;
+        right: unset;
+        left: 40%;
+        transform: translateX(50%);
+    }
 `;
 
 export const StackContainer = styled.div`
     position: relative;
-    width: 250px;
+    width: 245px;
     height: 240px;
     background: rgb(56,72,92);
     box-shadow: 0px 104px 224px rgba(0, 0, 0, 0.05);
-    border-radius: 90px 60px;
-    margin: 20px auto;
+    border-radius: 60px 30px;
+    margin: 35px auto 20px auto;
     z-index: 1;
     @media(min-width: 768px){
         position: absolute;
@@ -90,6 +96,7 @@ export const StackContainer = styled.div`
         left: -50px;
         width: 220px;
         margin: unset;
+        border-radius: 90px 60px;
     }
     @media(min-width: 992px){
         width: 300px;
@@ -105,7 +112,7 @@ export const StackContainer = styled.div`
     }
 `;
 
-export const Tool = styled.div`
+export const Tool = styled(motion.div)`
     position: relative;
     display: flex;
     align-items: center;
@@ -143,8 +150,9 @@ export const Circle = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 95px;
-    height: 95px;
+    width: 80px;
+    height: 80px;
+    padding: 15px;
     background: radial-gradient(81.9% 81.9% at 50% 18.1%, #FCDC67 0%, #EDAE50 100%);
     border-radius: 48px;
     left: 50%;

@@ -14,7 +14,6 @@ class NavToogle extends Component{
     toogleMenu = () => {
         const {setActive} = this.props;
         this.setState(({menu}) => {
-            setActive(!menu);
             return {menu: !menu};
         });
     }

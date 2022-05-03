@@ -17,7 +17,7 @@ const Skills = () => {
 
     return(
         <SkillsContainer name="skills">
-            <SkillsContent 
+            <SkillsContent
                 className="container"
                 initial = {indexScroll ? 'visible' : 'hidden'}
                 animate = "visible"

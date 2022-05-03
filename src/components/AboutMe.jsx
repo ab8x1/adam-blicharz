@@ -8,7 +8,7 @@ import StackVisual from './StackVisual';
 const stagger = {
     hidden: {},
     show: {
-        transition: { delayChildren: 0.3, staggerChildren: 0.2 }
+        transition: { delayChildren: 0.3, staggerChildren: 0.3 }
     }
 }
 
@@ -28,7 +28,7 @@ const fadePhoto = {
     hidden: { opacity: 0 },
     show: {
         opacity: 1,
-        transition: { duration: 0.5, ease: "easeInOut", delay: 0.8 }
+        transition: { duration: 0.5, ease: "easeInOut"}
     }
 }
 
@@ -50,9 +50,9 @@ const AboutMe = () => {
             </InfoText>
             <VisualInfo>
                 <ImageConatiner variants={fadePhoto}>
-                    <Image priority src="/me.jpg" layout="fill" objectFit="cover" objectPosition="center" alt="Adam Blicharz"/>
+                    <Image src="/me.jpg" priority layout="fill" objectFit="cover" objectPosition="center" alt="Adam Blicharz"/>
                 </ImageConatiner>
-                <StackVisual/>
+                <StackVisual disableAnimation={indexScroll}/>
             </VisualInfo>
         </Wrapper>
     )

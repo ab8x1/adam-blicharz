@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Element } from 'react-scroll';
 
 export const ProjectsContainer = styled(Element)`
+    position: relative;
     margin: 0 auto;
     padding: 50px 15px 10px 15px;
     @media(min-width: 768px){
@@ -19,32 +20,32 @@ export const Title = styled.h2`
 `;
 
 export const ProjectsContent = styled.div`
-    display: grid;
-    grid-template-columns: 100fr;
-    gap: 30px;
+    display: flex;
+    max-width: 95%;
+    padding-bottom: 30px;
+    margin: 0 auto;
     margin-bottom: 80px;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
     @media(min-width: 992px){
-        grid-template-columns: 33fr 33fr 33fr;
+        max-width: 85%;
         margin-bottom: 100px;
     }
 `;
 
 export const Project = styled.div`
-    position: relative;
-    height: 100%;
     display: grid;
-    grid-template-rows: 100px 1fr 63px;
-    padding: 10px;
-    border: 3px solid #058C9A;
-    border-radius: 15px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 0.95rem;
-    background-color: rgb(56, 72, 92);
-    padding: 30px 15px 30px 15px;
-    overflow: hidden;
-    &:hover span{
-        opacity: 0.95;
+    grid-template-rows: 80px 1fr 90px;
+    justify-items: flex-start;
+    min-width: calc((100%) - (30px));
+    padding: 30px;
+    margin: 0 15px;
+    border-radius: 30px;
+    background-image: linear-gradient(to right, #8360c3, #2ebf91);
+    @media(min-width: 992px){
+        margin: 0 30px;
+        min-width: calc((50%) - (60px));
+        padding: 30px 50px;
     }
 `;
 
@@ -52,18 +53,22 @@ export const ProjectImg = styled.div`
     position: relative;
     display: flex;
     align-items: center;
-    width: 140px;
-    margin: 0px auto;
+    width: 60px;
+    height: 60px;
+    padding: 15px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 0;
 `;
 
 export const Button = styled.button`
-    display: block;
-    margin: 20px auto 0 auto;
-    padding: 3px 45px;
-    background-color: #058C9A;
+    display: table;
+    margin: 20px 0;
+    padding: 0 60px;
+    background-color: rgb(56,72,92);
     border-radius: 10px;
     outline: none;
-    border: 2px solid #058C9A;
+    border: none;
     font-size: 0.95rem;
     text-decoration: none;
     cursor: pointer;
@@ -71,8 +76,22 @@ export const Button = styled.button`
     font-weight: bold;
     transition: all 0.2s ease-in-out;
     &:hover{
-        background-color: white;
-        color: #058C9A;
         transform: scale(1.04);
     }
+`;
+
+export const Arrow = styled.div`
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    ${({forth}) => forth ? `right: 0; transform: translateY(-50%) rotate(180deg);`:`left: 0;`}
+    height: 64px;
+    width: 64px;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+    ${({disabled}) => disabled && `
+        opacity: 0.3;
+        pointer-events: none;
+    `};
 `;
