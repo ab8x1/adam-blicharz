@@ -16,32 +16,15 @@ export const Title = styled.h2`
     font-size: 2rem;
 `;
 
-export const ProjectsContent = styled.div`
-    display: flex;
-    max-width: 95%;
-    padding-bottom: 30px;
-    margin: 0 auto;
-    margin-bottom: 80px;
-    overflow-x: scroll;
-    scroll-behavior: smooth;
-    @media(min-width: 992px){
-        max-width: 85%;
-        margin-bottom: 100px;
-    }
-`;
-
 export const Project = styled.div`
     display: grid;
     grid-template-rows: 80px 1fr 90px;
     justify-items: flex-start;
-    min-width: calc((100%) - (30px));
+    width: 100%;
     padding: 30px;
-    margin: 0 15px;
     border-radius: 30px;
     background-image: linear-gradient(to right, #8360c3, #2ebf91);
     @media(min-width: 992px){
-        margin: 0 30px;
-        min-width: calc((50%) - (60px));
         padding: 30px 50px;
     }
 `;
@@ -75,20 +58,4 @@ export const Button = styled.button`
     &:hover{
         transform: scale(1.04);
     }
-`;
-
-export const Arrow = styled.div`
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    ${({forth}) => forth ? `right: 0; transform: translateY(-50%) rotate(180deg);`:`left: 0;`}
-    height: 64px;
-    width: 64px;
-    cursor: pointer;
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-    ${({disabled}) => disabled && `
-        opacity: 0.3;
-        pointer-events: none;
-    `};
 `;

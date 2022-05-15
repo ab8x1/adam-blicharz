@@ -1,73 +1,91 @@
 import {useContext, useEffect, useState, memo, useRef} from 'react';
 import {GlobalContext} from'./App';
-import {CarouselContainer, Item} from '../styles/carouselStyles'
+import {CarouselContainer, CarouselContent, Item, Arrow, Dots, Dot} from '../styles/carouselStyles'
 import Image from 'next/image'
 
-let isScrolling, lastXPosition=0, intendedPosition;
+let isScrolling, currentXPosition=0;
 
-function Carousel({items}){
-    const contentRef = useRef();
-    const {indexScroll} = useContext(GlobalContext);
-    const {xPos} = indexScroll || {};
-    const [activeBack, setActiveBack] = useState(xPos > 0);
-    const [activeForth, setActiveForth] = useState(true);
+// create memo for items, because they don't change as often as Carousele(arrows, dot's change constantly)
+const ItemsMemo = memo(({items, sizes}) => {
+    return(
+        <>
+            {
+                items.map((item, i) =>
+                    <Item key={`item.${i}`} sizes={sizes}>
+                        {item}
+                    </Item>
+                )
+            }
+        </>
+    )
+})
+
+//detect when user stopped scrolling
+function onScrollEnd(scrollLeft, scrollnextProjext){
+    clearTimeout( isScrolling );
+     //if scroll was performed with arrows don't watch for scrollEnd
+     if(scrollLeft !== currentXPosition) isScrolling = setTimeout(function() {
+        const forth = scrollLeft > currentXPosition;
+        scrollnextProjext(forth);
+    }, 400);
+}
+
+// follow scroll change - moved outside component to avoid rerendering
+function followScroll(element, setActiveBack, setActiveForth, scrollnextProjext){
+    const {target} = element;
+    const {scrollLeft, offsetWidth, scrollWidth} = target;
+    onScrollEnd(scrollLeft, scrollnextProjext); //if user stops scrolling move to next nearest project
+
+    //when checinkg dots cosider moving this logic there
+    setActiveBack(scrollLeft > 0); //activate back arrow
+    setActiveForth(offsetWidth + scrollLeft < scrollWidth - 10); //activate back arrow
+}
+
+function Carousel({items, sizes}){
+    const sortedSizes = sizes.sort((a, b) => a.size - b.size); //sort sizes from smallest to biggest
+    const contentRef = useRef();    //items container
+    const [activeBack, setActiveBack] = useState(false); //is back arrow active
+    const [activeForth, setActiveForth] = useState(true);  //is forth arrow active
+    const [activeDot, setActiveDot] = useState();
+
+    const scrollnextProjext = forth => {
+        const element = contentRef.current;
+        const {columns} = [...sortedSizes].reverse().find(({size}) => window.innerWidth >= size); //get num of columns for actual window size
+        const contentWidth = parseInt(element.offsetWidth / columns); //get exact content width for actual window size
+        const variation = element.scrollLeft % contentWidth; //get distance between actual scroll position and container edge
+        let distance = forth ? contentWidth - variation : variation || contentWidth; //get distance to move
+        let newPosition; //declare new desired position
+        if(forth) newPosition = element.scrollLeft + distance;
+        else newPosition = element.scrollLeft - distance;
+        currentXPosition = newPosition;
+        element.scrollLeft = newPosition;
+    }
 
     useEffect(() => {
         const {current} = contentRef;
-        current.style.scrollBehavior = 'auto';
-        current.scrollLeft = xPos || 0;
-        current.style.scrollBehavior = 'smooth';
-        current.addEventListener('scroll', followScroll);
+        current.addEventListener('scroll', element => followScroll(element, setActiveBack, setActiveForth, scrollnextProjext));
         return () => {
             current.removeEventListener('scroll', followScroll);
         }
     }, [])
 
-    const followScroll = el => {
-        clearTimeout( isScrolling );
-        if(el.target.scrollLeft !== intendedPosition)
-        isScrolling = setTimeout(function() {
-            const forth = el.target.scrollLeft > lastXPosition;
-            scrollnextProjext(forth);
-        }, 400);
-        setActiveBack(el.target.scrollLeft > 0);
-        setActiveForth(el.target.offsetWidth + el.target.scrollLeft < el.target.scrollWidth - 10);
-    }
-
-    const scrollnextProjext = forth => {
-        const element = contentRef.current;
-        const contentWidth = parseInt(element.offsetWidth / (window.innerWidth >= 992 ? 2 : 1));
-        const variation = element.scrollLeft % (contentWidth);
-        let distance = forth ? contentWidth - variation : variation || contentWidth;
-        let newPosition;
-        //if user scrolls beyond last content box, return to prevoius one
-        if(!activeForth && variation > 0 && variation < 10) distance += contentWidth;
-        if(forth){
-            const newDistance = element.scrollLeft + element.offsetWidth + distance;
-            if(element.scrollWidth - newDistance > 0 && element.scrollWidth - newDistance < 10) newPosition = element.scrollWidth;
-            else newPosition = element.scrollLeft + distance;
-        }
-        else newPosition = element.scrollLeft - distance;
-        intendedPosition = newPosition;
-        lastXPosition = newPosition;
-        element.scrollLeft = newPosition;
-    }
-
     return(
-        <CarouselContainer ref={contentRef}>
+        <CarouselContainer style={{position: 'relative'}}>
             <Arrow onClick={() => scrollnextProjext(false)} disabled={!activeBack}>
-                <Image src="/chevron.png" width={64} height={64}/>
+                <Image src="/chevron.png" width={40} height={40}/>
             </Arrow>
             <Arrow onClick={() => scrollnextProjext(true)} forth disabled={!activeForth}>
-                <Image src="/chevron.png" width={64} height={64}/>
+                <Image src="/chevron.png" width={40} height={40}/>
             </Arrow>
-            {
-                items.map(item =>
-                    <Item>
-                        {item}
-                    </Item>
-                )
-            }
+            <CarouselContent ref={contentRef}>
+               <ItemsMemo items={items} sizes={sizes}/>
+            </CarouselContent>
+            <Dots>
+                {Array.from(Array(items.length).keys()).map(i => <Dot key={i}/>)}
+            </Dots>
         </CarouselContainer>
+
     )
 }
+
+export default Carousel;
