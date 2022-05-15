@@ -14,7 +14,7 @@ const stagger = {
 
 const fadeText = {
     hidden: {
-        y: -40,
+        y: 40,
         opacity: 0
     },
     show: {

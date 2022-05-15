@@ -21,7 +21,7 @@ const Project = ({name, description, url, stack, imgs, otherRoutes}) => {
   const {indexScroll} = useContext(GlobalContext);
   const router = useRouter();
   const handleBack = () => {
-    router.push('/').then(() => window.scrollTo(0, indexScroll));
+    router.push('/').then(() => window.scrollTo(0, indexScroll?.yPos || 0));
   }
   const slides = imgs.map(img => ({original: img}));
   const {prev, next} = otherRoutes;

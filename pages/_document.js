@@ -32,9 +32,18 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="preconnect" href="https://fonts.googleapis.com"/>
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-          <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet"/>
+            <link rel="preload" href="/fonts/workSans.woff2" as="font" type="font/woff2" crossOrigin="anonymous"/>
+            <style dangerouslySetInnerHTML={{__html: `
+                @font-face {
+                  font-family: 'Work Sans';
+                  font-style: normal;
+                  font-weight: 400;
+                  font-display: swap;
+                  src: local(''),
+                      url('/fonts/workSans.woff2') format('woff2'),
+                      url('/fonts/workSans.woff') format('woff');
+                }
+            `}}/>
         </Head>
         <body>
           <Main />

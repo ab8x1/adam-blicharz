@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Element } from 'react-scroll';
 
-export const ProjectsContainer = styled(Element)`
+export const ProjectsSection = styled(Element)`
     position: relative;
     margin: 0 auto;
     padding: 50px 15px 10px 15px;
@@ -11,12 +11,9 @@ export const ProjectsContainer = styled(Element)`
 `;
 
 export const Title = styled.h2`
-    margin: 10px 0 50px 0;
+    margin-bottom: 50px;
     text-align: center;
     font-size: 2rem;
-    @media(min-width: 768px){
-        margin: 20px 0 70px 0;
-    }
 `;
 
 export const ProjectsContent = styled.div`

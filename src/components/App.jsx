@@ -5,7 +5,7 @@ import cacheScroll from '../helpers/scrollRestoration';
 export const GlobalContext = createContext(false);
 
 const App = ({children}) => {
-    const [indexScroll, setIndexScroll] = useState(0);
+    const [indexScroll, setIndexScroll] = useState();
     const router = useRouter();
     cacheScroll(router);
     return(
