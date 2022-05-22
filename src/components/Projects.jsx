@@ -42,7 +42,7 @@ const Projects = props => {
     const {indexScroll, setIndexScroll} = useContext(GlobalContext);
 
     const [ref, inView] = useInView({
-        threshold: 1,
+        threshold: 0.6,
         triggerOnce: true,
     });
 
@@ -97,8 +97,7 @@ const Projects = props => {
             <Title>{t('ActualProjects')}</Title>
             <Carousel items={projects} sizes={[
                 {size: 992, columns: 2, gap: 30},
-                {size: 0, columns: 1, gap: 10},
-                {size: 1100, columns: 3, gap: 10},
+                {size: 0, columns: 1, gap: 15},
             ]}/>
         </Animation>
     )
