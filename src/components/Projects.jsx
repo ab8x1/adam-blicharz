@@ -35,7 +35,7 @@ const Animation = ({children, seen, inView, reference}) => {
     )
 }
 
-const Projects = props => {
+const Projects = ({allProjects}) => {
     const { t } = useTranslation('common');
     const router = useRouter();
     const contentRef = useRef();
@@ -48,6 +48,7 @@ const Projects = props => {
 
     const viewProject = ({target}) => {
         console.log(target.parentElement.parentElement.parentElement.scrollLeft);
+        console.log(target.parentElement.scrollLeft);
         // const xPos = contentRef.current.scrollLeft;
         // const yPos = window.scrollY;
         // router.push(`/projects/[project]` ,`/projects/${target.value}`).then(() => {
@@ -56,41 +57,16 @@ const Projects = props => {
         // });
     }
 
-    const projects = [
+    const projects = allProjects.map(({name, route, description, icon}) =>
         <Project>
-        <ProjectImg> <Image src="/sm-nauczyciel.png" width={52} height={52}/> </ProjectImg>
-        <div>
-            <h2>Sm Nauczyciel</h2>
-            <p>Strona Spółdzelni Mieszkaniowej Nauczyciel w Policach. Projekt ten posiada rozbudowany panel do zarządzania treścią, umożliwiający administratorowi dodawanie/edycję postów wraz ze zdjęciami. Pisząc post<b>[...]</b></p>
-        </div>
-        <Button value="sm-nauczyciel" onClick={viewProject}>{t('Details')}</Button>
-        </Project>,
-        <Project style={{backgroundImage: 'linear-gradient(to right, #8e2de2, #4a00e0)'}}>
-            <ProjectImg> <Image src="/langbox.png" layout="fill" objectFit="contain"/> </ProjectImg>
-            <p>{t('LbDesc')}</p>
-            <Button value="langbox" onClick={viewProject}>{t('Details')}</Button>
-        </Project>,
-        <Project>
-            <ProjectImg> <Image src="/froog.svg" layout="fill" objectFit="contain"/> </ProjectImg>
-            <p>{t('LkDesc')}</p>
-            <Button value="froog" onClick={viewProject}>{t('Details')}</Button>
-        </Project>,
-        <Project>
-            <ProjectImg> <Image src="/froog.svg" layout="fill" objectFit="contain"/> </ProjectImg>
-            <p>{t('LkDesc')}</p>
-            <Button value="froog" onClick={viewProject}>{t('Details')}</Button>
-        </Project>,
-        <Project >
-            <ProjectImg> <Image src="/froog.svg" layout="fill" objectFit="contain"/> </ProjectImg>
-            <p>{t('LkDesc')}</p>
-            <Button value="froog" onClick={viewProject}>{t('Details')}</Button>
-        </Project>,
-        <Project>
-            <ProjectImg> <Image src="/froog.svg" layout="fill" objectFit="contain"/> </ProjectImg>
-            <p>{t('LkDesc')}</p>
-            <Button value="froog" onClick={viewProject}>{t('Details')}</Button>
+            <ProjectImg> <Image src={icon} width={52} height={52}/> </ProjectImg>
+            <div>
+                <h2>{name}</h2>
+                <p>{description.substr(0, 250)}<b>[...]</b></p>
+            </div>
+            <Button value={route} onClick={viewProject}>{t('Details')}</Button>
         </Project>
-    ]
+    )
 
     return(
         <Animation seen={indexScroll} inView={inView} reference={ref}>

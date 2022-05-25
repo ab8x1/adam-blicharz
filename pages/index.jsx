@@ -6,7 +6,7 @@ import Projects from '../src/components/Projects';
 import GitHub from '../src/components/GitHub';
 import Contact from '../src/components/Contact';
 
-export default function Home() {
+export default function Home({allProjects}) {
   return (
     <>
       <Head>
@@ -22,7 +22,7 @@ export default function Home() {
           <Skills/>
         </section>
         <section>
-          <Projects/>
+          <Projects allProjects={allProjects}/>
         </section>
         <section>
             <GitHub/>
@@ -33,4 +33,26 @@ export default function Home() {
       </main>
     </>
   )
+}
+
+//------------------------------ Server Side Code ------------------------------
+
+import {request} from '../lib/datocms';
+
+export async function getStaticProps({locale}) {
+  const { allProjects } = await request({
+    query: `query MyQuery {
+      allProjects(filter: {}, locale: ${locale}) {
+        name
+        route
+        description
+        icon
+      }
+    }`
+  });
+  return {
+    props: {
+      allProjects
+    }
+  }
 }
