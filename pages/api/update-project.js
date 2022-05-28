@@ -2,12 +2,11 @@
 export default async (req, res) => {
     const {key} = req.query;
     if(key === process.env.UPDATE_KEY){
-      const route = `/projects/${req.body?.entity?.attributes?.route}`;
-      console.log('---------------');
-      console.log(route);
-      console.log('---------------');
+      const project_route = `/projects/${req.body?.entity?.attributes?.route}`;
+      const index_route = `/`;
       try{
-        await res.unstable_revalidate(route);
+        await res.unstable_revalidate(project_route);
+        await res.unstable_revalidate(index_route);
         res.status(200).json({
           status: 'Data updated'
         });
