@@ -43,7 +43,7 @@ export const Item = styled.div`
 
 export const Arrow = styled.button`
     position: absolute;
-    top: 50%;
+    top: 45%;
     transform: translateY(-50%);
     ${({forth}) => forth ? `right: 0; transform: translateY(-50%) rotate(180deg);`:`left: 0;`}
     height: 40px;

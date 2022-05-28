@@ -18,7 +18,7 @@ export const Title = styled.h2`
 
 export const Project = styled.div`
     display: grid;
-    grid-template-rows: 80px 1fr 90px;
+    grid-template-rows: 1fr 90px;
     justify-items: flex-start;
     width: 100%;
     padding: 30px;
@@ -28,15 +28,11 @@ export const Project = styled.div`
     }
 `;
 
-export const ProjectImg = styled.div`
+export const ProjectTitle = styled.div`
     position: relative;
     display: flex;
     align-items: center;
-    width: 60px;
-    height: 60px;
-    padding: 15px;
-    background-color: white;
-    border-radius: 50%;
+    overflow: hidden;
     margin: 0;
 `;
 

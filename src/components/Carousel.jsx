@@ -1,6 +1,6 @@
 import {useEffect, useState, memo, useRef} from 'react';
 import {CarouselContainer, CarouselContent, Item, Arrow, Dots, Dot} from '../styles/carouselStyles'
-import {Button, Project, ProjectImg} from '../styles/projectsStyles';
+import {Button, Project, ProjectTitle} from '../styles/projectsStyles';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
@@ -26,9 +26,13 @@ const ItemsMemo = memo(({items, sizes, setIndexScroll}) => {
                 items.map(({name, route, description, icon}, i) =>
                     <Item key={`item.${i}`} sizes={sizes}>
                         <Project style={{backgroundImage: gradients[i]}}>
-                            <ProjectImg> <Image src={icon} width={52} height={52}/> </ProjectImg>
                             <div>
-                                <h2>{name}</h2>
+                                <ProjectTitle>
+                                    <h2>{name}</h2>
+                                    <div style={{width: '40px', height: '40px', marginLeft: '15px'}}>
+                                        <Image src={icon} width={50} height={50}/>
+                                    </div>
+                                </ProjectTitle>
                                 <p>{description.substr(0, 250)}<b>[...]</b></p>
                             </div>
                             <Button value={route} onClick={viewProject}>{t('Details')}</Button>
