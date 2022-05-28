@@ -1,4 +1,4 @@
-import {useState, memo, useEffect} from 'react';
+import {useState, memo, useEffect, useRef} from 'react';
 import NavToogle from './NavToogle';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
@@ -8,6 +8,7 @@ import { animateScroll as scroll } from 'react-scroll';
 function Navbar(){
     const [isActive, setActive] = useState(false);
     const { lang } = useTranslation();
+    const navRef = useRef();
 
     const checkIfActive = () => {
         if(window.scrollY >= 80) setActive(true);
@@ -23,13 +24,13 @@ function Navbar(){
     }, []);
 
     return(
-        <Nav isActive={isActive}>
+        <Nav isActive={isActive} ref={navRef}>
             <NavContainer className="container">
                 <NavBrand onClick={() => scroll.scrollToTop({duration: 300})}>
                     AB
                 </NavBrand>
                 <NavRight>
-                    <NavToogle setActive={setActive}/>
+                    <NavToogle/>
                     <Languages>
                         <Language selected={lang === 'en'}>
                             <Link href='/' locale={'en'} scroll={false}>

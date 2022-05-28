@@ -36,6 +36,7 @@ const Skills = () => {
                                     <Stack key={tech}>{tech}</Stack>
                                 )
                             }
+                            [...]
                         </Skill>
                     )
                 }

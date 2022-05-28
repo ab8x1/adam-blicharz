@@ -15,6 +15,7 @@
 public/
 Projects_JSONS/
 .env.local
+.env
 
 # production
 /build

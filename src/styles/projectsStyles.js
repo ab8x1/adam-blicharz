@@ -23,7 +23,6 @@ export const Project = styled.div`
     width: 100%;
     padding: 30px;
     border-radius: 30px;
-    background-image: linear-gradient(to right, #8360c3, #2ebf91);
     @media(min-width: 992px){
         padding: 30px 50px;
     }

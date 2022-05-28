@@ -4,16 +4,16 @@ import useTranslation from 'next-translate/useTranslation';
 
 const Arrow = styled.div`
     position: fixed;
-    display: none;
     top: 50%;
     transform: translateY(-50%);
+    ${({left}) => left ? 'left: -10px;' : 'right: -10px;'}
     z-index: 10;
     cursor: pointer;
     &:hover label{
         display: block;
     }
-    @media(min-width: 992px){
-        display: block;
+    @media(min-width: 768px){
+        ${({left}) => left ? 'left: 10px;' : 'right: 10px;'}
     }
 `;
 
@@ -36,12 +36,22 @@ const ArrowContainer = styled.div`
             transform: scaleX(-1);
         }
     `}
+    & img{
+        width: 50px;
+        height: 50px;
+    }
+    @media(min-width: 768px){
+        & img {
+            width: 70px;
+            height: 70px;
+        }
+    }
 `;
 
 const ProjectArrows = ({prev, next}) => {
     const { t } = useTranslation('common');
     return(<>
-        <Arrow style={{left: '10px'}}>
+        <Arrow left>
             <ArrowContainer mirror>
                 <Link href="/projects/[project]" as={`/projects/${prev}`}><a>
                     <img src="/forth.png" alt=""/>
@@ -49,7 +59,7 @@ const ProjectArrows = ({prev, next}) => {
                 <label style={{left: '5px'}}>{t('PreviousProject')}</label>
             </ArrowContainer>
         </Arrow>
-        <Arrow style={{right: '10px'}}>
+        <Arrow>
             <ArrowContainer>
                 <Link href="/projects/[project]" as={`/projects/${next}`}><a>
                     <img src="/forth.png" alt=""/>

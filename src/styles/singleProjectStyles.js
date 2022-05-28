@@ -71,7 +71,8 @@ export const Content = styled.div`
     text-align: justify;
 `;
 
-export const Gallery = styled(motion.div)`
+export const GalleryContainer = styled(motion.div)`
+    position: relative;
     max-width: 900px;
     max-height: 505px;
     margin: 50px auto 50px auto;
@@ -89,4 +90,10 @@ export const Gallery = styled(motion.div)`
             height: 505px;
         }
     }
+`;
+
+export const Gallery = styled(motion.div)`
+    position: absolute;
+    width: 100%;
+    height: 100%;
 `;

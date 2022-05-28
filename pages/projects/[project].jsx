@@ -1,11 +1,11 @@
-import {useContext} from 'react';
+import {useContext, useEffect} from 'react';
 import {GlobalContext} from'../../src/components/App';
 import { useRouter } from 'next/router';
 import otherProjects from '../../src/helpers/otherRoutes';
 import ProjectArrows from '../../src/components/ProjectArrows';
 import Stack from '../../src/components/Stack';
 import Head from 'next/head';
-import {BackButton, Content, ProjectSection, Title, Gallery, ShowWebsite} from '../../src/styles/singleProjectStyles';
+import {BackButton, Content, ProjectSection, Title, Gallery, ShowWebsite, GalleryContainer} from '../../src/styles/singleProjectStyles';
 import ImageGallery from 'react-image-gallery';
 import useTranslation from 'next-translate/useTranslation';
 import "react-image-gallery/styles/css/image-gallery.css";
@@ -16,13 +16,26 @@ const fadeIn = {
   transition: {duration: 0.3, ease: "easeInOut"}
 }
 
-const Project = ({name, description, url, stack, imgs, otherRoutes}) => {
+const Project = ({name, description, url, stack, imgs, otherRoutes, order}) => {
   const { t } = useTranslation('common');
-  const {indexScroll} = useContext(GlobalContext);
+  const {indexScroll, setIndexScroll} = useContext(GlobalContext);
   const router = useRouter();
+
+  useEffect(() => {
+    router.events.on('routeChangeStart', handleRouteChangeStart);
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChangeStart);
+    }
+  }, []);
+
+  const handleRouteChangeStart = () => {
+    if(indexScroll?.currentDot !== order) setIndexScroll(st => ({...st, currentDot: order}));
+  }
+
   const handleBack = () => {
     router.push('/').then(() => window.scrollTo(0, indexScroll?.yPos || 0));
   }
+
   const slides = imgs.map(img => ({original: img}));
   const {prev, next} = otherRoutes;
 
@@ -43,14 +56,18 @@ const Project = ({name, description, url, stack, imgs, otherRoutes}) => {
             </ShowWebsite>
           </Title>
           <Content> {description} </Content>
-          <Gallery {...fadeIn}>
-            <ImageGallery
-              items={slides}
-              showThumbnails={false}
-              showFullscreenButton={false}
-              autoPlay
-              slideInterval={4000}/>
-          </Gallery>
+          <GalleryContainer {...fadeIn}>
+            <div style={{paddingBottom: '55%'}}>
+            <Gallery>
+              <ImageGallery
+                items={slides}
+                showThumbnails={false}
+                showFullscreenButton={false}
+                autoPlay
+                slideInterval={4000}/>
+              </Gallery>
+              </div>
+          </GalleryContainer>
           <Stack {...stack} />
       </ProjectSection>
       </>
@@ -97,12 +114,15 @@ export async function getStaticProps({locale, params}) {
     query: PROJECT_QUERY,
     variables: { route }
   });
-  const allProjects = [{route: 'sm-nauczyciel'}, {route: 'langbox'}, {route: 'froog'}];
-  const {prev, next} = otherProjects(route, allProjects);
+  const { allProjects } = await request({
+    query: ROUTES_QUERY
+  });
+  const {prev, next, order} = otherProjects(route, allProjects);
   return {
     props: {
       key: route,
       otherRoutes: {prev, next},
+      order,
       ...project
     }
   }
