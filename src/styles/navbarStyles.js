@@ -94,6 +94,13 @@ export const Language = styled.div`
     }
 `;
 
+export const NavToogleContainer = styled.div`
+    order: 2;
+    @media (min-width: 768px) {
+        order: 1;
+    }
+`;
+
 export const MenuItems = styled.ul`
     height: ${({open}) => open ? '210px' : '0'};
     overflow: hidden;
@@ -150,7 +157,6 @@ export const MenuItem = styled.li`
 `;
 
 export const MenuToogler = styled.div`
-    order: 2;
     display: block;
     position: relative;
     width: 22px;

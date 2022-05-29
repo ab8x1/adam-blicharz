@@ -1,66 +1,53 @@
-import {Component } from 'react';
-import withTranslation from 'next-translate/withTranslation';
+import {useState, useRef} from 'react';
 import { Link } from 'react-scroll';
-import onClickOutside from "react-onclickoutside";
-import {MenuItem, MenuItems, MenuToogler, Bar} from '../styles/navbarStyles';
+import {MenuItem, MenuItems, MenuToogler, Bar, NavToogleContainer} from '../styles/navbarStyles';
+import useTranslation from 'next-translate/useTranslation';
+import onClickOutside from '../helpers/onClickOutside';
 
-class NavToogle extends Component{
-    constructor(){
-        super();
-        this.state = {
-            menu: false
-        }
+export default function NavToogle(){
+    const [menu, setMenu] = useState(false);
+    const { t } = useTranslation('common');
+    const ref = useRef(null);
+
+    const toogleMenu = () => {
+        setMenu(menu => !menu);
     }
-    toogleMenu = () => {
-        const {setActive} = this.props;
-        this.setState(({menu}) => {
-            return {menu: !menu};
-        });
+
+    const closeMenu = () => {
+        setMenu(false);
     }
-    closeMenu = () => {
-        if(this.state.menu){
-            this.setState({menu: false});
-        }
-    }
-    handleClickOutside = evt => {
-        this.closeMenu();
-    };
-    render(){
-        const {menu} = this.state;
-        const { t } = this.props.i18n
-        return(
-            <>
-            <MenuToogler open={menu} onClick={this.toogleMenu}>
+
+    onClickOutside(ref, closeMenu);
+
+    return(
+        <NavToogleContainer ref={ref}>
+            <MenuToogler open={menu} onClick={toogleMenu}>
                 <Bar/>
                 <Bar/>
                 <Bar/>
             </MenuToogler>
             <MenuItems open={menu}>
                 <MenuItem>
-                    <Link onClick={this.closeMenu} activeClass="active" to="skills" spy={true} smooth={true} offset={-67} duration={500}>
+                    <Link onClick={closeMenu} activeClass="active" to="skills" spy={true} smooth={true} offset={-67} duration={500}>
                         {t('common:Skills')}
                     </Link>
                 </MenuItem>
                 <MenuItem>
-                    <Link onClick={this.closeMenu} activeClass="active" to="projects" spy={true} smooth={true} offset={-67} duration={500}>
+                    <Link onClick={closeMenu} activeClass="active" to="projects" spy={true} smooth={true} offset={-67} duration={500}>
                         {t('common:Projects')}
                     </Link>
                 </MenuItem>
                 <MenuItem>
-                    <Link onClick={this.closeMenu} activeClass="active" to="github" spy={true} smooth={true} offset={-67} duration={500}>
+                    <Link onClick={closeMenu} activeClass="active" to="github" spy={true} smooth={true} offset={-67} duration={500}>
                         GitHub
                     </Link>
                 </MenuItem>
                 <MenuItem>
-                    <Link onClick={this.closeMenu} activeClass="active" to="contact" spy={true} smooth={true} offset={-67} duration={500}>
+                    <Link onClick={closeMenu} activeClass="active" to="contact" spy={true} smooth={true} offset={-67} duration={500}>
                         {t('common:Contact')}
                     </Link>
                 </MenuItem>
             </MenuItems>
-            </>
-        )
-    }
+        </NavToogleContainer>
+    )
 }
-
-
-export default withTranslation(onClickOutside(NavToogle));

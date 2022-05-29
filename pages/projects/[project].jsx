@@ -29,7 +29,7 @@ const Project = ({name, description, url, stack, imgs, otherRoutes, order}) => {
   }, []);
 
   const handleRouteChangeStart = () => {
-    if(indexScroll?.currentDot !== order) setIndexScroll(st => ({...st, currentDot: order}));
+    setIndexScroll(st => ({...st, returnedFrom: order}));
   }
 
   const handleBack = () => {
@@ -43,7 +43,6 @@ const Project = ({name, description, url, stack, imgs, otherRoutes, order}) => {
       <>
       <Head>
         <title>Projekty - Adam Blicharz</title>
-        <link rel="preload" as="image" href={`${process.env.NEXT_PUBLIC_APP}/${imgs?.[0]}`}/>
       </Head>
       <ProjectSection className="container">
           <ProjectArrows prev={prev} next={next}/>
@@ -82,6 +81,7 @@ import {request} from '../../lib/datocms';
 
 const ROUTES_QUERY = `query MyQuery {
   allProjects {
+    order
     route
   }
 }`;
@@ -114,9 +114,10 @@ export async function getStaticProps({locale, params}) {
     query: PROJECT_QUERY,
     variables: { route }
   });
-  const { allProjects } = await request({
+  let { allProjects } = await request({
     query: ROUTES_QUERY
   });
+  allProjects = allProjects.sort((a, b) => a.order - b.order);
   const {prev, next, order} = otherProjects(route, allProjects);
   return {
     props: {

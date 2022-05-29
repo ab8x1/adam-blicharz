@@ -1,83 +1,58 @@
-import {useEffect, useState, memo, useRef} from 'react';
-import {CarouselContainer, CarouselContent, Item, Arrow, Dots, Dot} from '../styles/carouselStyles'
-import {Button, Project, ProjectTitle} from '../styles/projectsStyles';
+import {useEffect, useState, useRef} from 'react';
+import {CarouselContainer, CarouselContent, Arrow, Dots, Dot} from '../styles/carouselStyles'
 import Image from 'next/image';
-import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
 import {followScroll, getContentWidth} from '../helpers/carouseleHelpers';
-import {gradients} from '../consts/gradients';
+import ItemsMemo from '../components/ItemsMemo';
 
-let currentXPosition=0, currentDot=0;
-
-// create memo for items, because they don't change as often as Carousele(arrows/dot's change constantly)
-const ItemsMemo = memo(({items, sizes, setIndexScroll}) => {
-    const { t } = useTranslation('common');
-    const router = useRouter();
-    const viewProject = ({target}) =>{
-        const yPos = window.scrollY;
-        router.push(`/projects/[project]` ,`/projects/${target.value}`).then(() => {
-            window.scrollTo(0, 0);
-            setIndexScroll({yPos, currentDot});
-        });
-    }
-    return(
-        <>
-            {
-                items.map(({name, route, description, icon}, i) =>
-                    <Item key={`item.${i}`} sizes={sizes}>
-                        <Project style={{backgroundImage: gradients[i]}}>
-                            <div>
-                                <ProjectTitle>
-                                    <h2>{name}</h2>
-                                    <div style={{width: '40px', height: '40px', marginLeft: '15px'}}>
-                                        <Image src={icon} width={50} height={50}/>
-                                    </div>
-                                </ProjectTitle>
-                                <p>{description.substr(0, 250)}<b>[...]</b></p>
-                            </div>
-                            <Button value={route} onClick={viewProject}>{t('Details')}</Button>
-                        </Project>
-                    </Item>
-                )
-            }
-        </>
-    )
-})
-
+let currentXPosition=0, currentDot={val:0};
 
 function Carousel({items, sizes, indexScroll, setIndexScroll}){
-    const contentRef = useRef();    //items container
+    const contentRef = useRef(); //items container
+    const {lastCurrentDot, returnedFrom, lastSavedDir} = indexScroll || {};
     const [sortedSizes] = useState(sizes.sort((a, b) => a.size - b.size)); //sort sizes from smallest to biggest
     const [activeBack, setActiveBack] = useState(false); //is back arrow active
     const [activeForth, setActiveForth] = useState(true);  //is forth arrow active
-    const [activeDot, setActiveDot] = useState(indexScroll?.currentDot || 0);
+    const [activeDot, setActiveDot] = useState(returnedFrom || 0);
 
     useEffect(() => {
         const {current} = contentRef;
         current.addEventListener('scroll', element => followScroll(element, sortedSizes, scrollToDot, currentXPosition));
         current.style.scrollBehavior = "auto";
-        scrollToDot({target: {value: indexScroll?.currentDot || 0}});
+        const lastForth = returnedFrom !== lastCurrentDot ? returnedFrom > lastCurrentDot : lastSavedDir;
+        currentDot.lastForthDirection = lastForth;
+        scrollToDot({target: {value: returnedFrom || 0}, initial: true, lastForth});
         current.style.scrollBehavior = "smooth";
         return () => {
             current.removeEventListener('scroll', followScroll);
         }
     }, [])
 
-    const scrollToDot = ({target}) => {
+    const scrollToDot = ({target, initial, lastForth}) => {
         const {value} = target;
         let dot = value === 'forth' ? activeDot + 1 : value === 'back' ? activeDot - 1 : value;
         dot = Number(dot < 0 ? 0 : dot > items.length - 1 ? items.length - 1 : dot);
         const projectsContainer = contentRef.current;
         const {offsetWidth, scrollWidth} = projectsContainer;
-        const contentWidth = getContentWidth(sortedSizes, offsetWidth); //get exact content width for actual window size;
-        const newPosition = dot * contentWidth;
+        const {contentWidth, columns} = getContentWidth(sortedSizes, offsetWidth); //get exact content width for actual window size;
+        let newPosition = dot * contentWidth;
         const maxLeft = scrollWidth - offsetWidth;
-        const scrollTo = newPosition < maxLeft ? newPosition : maxLeft;
-        projectsContainer.scrollLeft = scrollTo;
-        currentXPosition = scrollTo;
+        const newIsInView = newPosition >= projectsContainer.scrollLeft && ((newPosition+contentWidth) <= (projectsContainer.scrollLeft + offsetWidth));
+        if(!newIsInView || initial){
+            if(!initial){
+                if(dot > activeDot && columns > 1) newPosition = newPosition - contentWidth;
+            }
+            else if(lastForth && columns > 1){
+                newPosition = newPosition - contentWidth;
+            }
+            newPosition = newPosition < maxLeft ? newPosition : maxLeft;
+            projectsContainer.scrollLeft = newPosition;
+            currentXPosition = newPosition;
+        }
+        currentDot.val = dot;
+        if(dot !== activeDot) currentDot.lastForthDirection = dot > activeDot;
         setActiveBack(dot > 0);
         setActiveForth(dot < items.length - 1);
-        setActiveDot(dot); currentDot=dot;
+        setActiveDot(dot);
     }
 
     return(
@@ -89,7 +64,7 @@ function Carousel({items, sizes, indexScroll, setIndexScroll}){
                 <Image src="/chevron.png" width={40} height={40}/>
             </Arrow>
             <CarouselContent ref={contentRef} active={activeDot + 1}>
-               <ItemsMemo items={items} sizes={sizes} setIndexScroll={setIndexScroll}/>
+               <ItemsMemo items={items} sizes={sizes} setIndexScroll={setIndexScroll} currentDot={currentDot}/>
             </CarouselContent>
             <Dots>
                 {Array.from(Array(items.length).keys()).map(i => <Dot value={i} onClick={scrollToDot} active={i === activeDot} key={i}/>)}

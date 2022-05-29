@@ -40,9 +40,10 @@ export default function Home({allProjects}) {
 import {request} from '../lib/datocms';
 
 export async function getStaticProps({locale}) {
-  const { allProjects } = await request({
+  let { allProjects } = await request({
     query: `query MyQuery {
       allProjects(filter: {}, locale: ${locale}) {
+        order
         name
         route
         description
@@ -50,6 +51,7 @@ export async function getStaticProps({locale}) {
       }
     }`
   });
+  allProjects = allProjects.sort((a, b) => a.order - b.order);
   return {
     props: {
       allProjects

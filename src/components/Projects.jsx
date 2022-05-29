@@ -1,7 +1,7 @@
 import useTranslation from 'next-translate/useTranslation';
-import {useContext, memo} from 'react';
+import {useContext, memo, useState, useRef} from 'react';
 import {GlobalContext} from'./App';
-import { useInView } from 'react-intersection-observer';
+import {useIntersection} from '../helpers/intersectionObserver';
 import { motion } from 'framer-motion';
 import {ProjectsSection, Title} from '../styles/projectsStyles';
 import Carousel from './Carousel';
@@ -36,10 +36,13 @@ const Animation = ({children, seen, inView, reference}) => {
 const Projects = ({allProjects}) => {
     const { t } = useTranslation('common');
     const {indexScroll, setIndexScroll} = useContext(GlobalContext);
-
-    const [ref, inView] = useInView({
-        threshold: 0.4,
-        triggerOnce: true,
+    const [inView, setIsInView] = useState(false);
+    const ref = useRef();
+    useIntersection(ref, () => {
+        setIsInView(true);
+    }, {
+        rootMargin: '0px',
+        threshold: '0.4'
     });
 
     return(

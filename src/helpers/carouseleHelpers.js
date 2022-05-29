@@ -19,7 +19,7 @@ function onScrollEnd(target, sortedSizes, scrollToDot, currentXPosition){
 
 function getNearestDot(target, sortedSizes, forth, scrollToDot){
     const {offsetWidth, scrollLeft} = target;
-    const contentWidth = getContentWidth(sortedSizes, offsetWidth); //get exact content width for actual window size;
+    const {contentWidth} = getContentWidth(sortedSizes, offsetWidth); //get exact content width for actual window size;
     const nearestDot = parseInt(scrollLeft / contentWidth);
     const targetoDot = forth ? nearestDot + 1 : nearestDot;
     scrollToDot({target: {value: targetoDot}});
@@ -27,5 +27,5 @@ function getNearestDot(target, sortedSizes, forth, scrollToDot){
 
 export function getContentWidth(sortedSizes, elementWidth){
     const {columns} = [...sortedSizes].reverse().find(({size}) => window.innerWidth >= size); //get num of columns for actual window size
-    return parseInt(elementWidth / columns); //get exact content width for actual window size
+    return {contentWidth: parseInt(elementWidth / columns), columns} //get exact content width for actual window size
 }

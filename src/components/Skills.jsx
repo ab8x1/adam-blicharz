@@ -1,7 +1,6 @@
 import useTranslation from 'next-translate/useTranslation'
 import {useContext} from 'react';
 import {GlobalContext} from'./App';
-import { useInView } from 'react-intersection-observer';
 import {Skill, SkillsContent, SkillsContainer, Title, Stack} from '../styles/skillsStyles';
 import skills from '../consts/skills';
 import Image from 'next/image';

@@ -1,10 +1,10 @@
-import {useContext} from 'react';
+import {useContext, useState, useRef} from 'react';
 import {GlobalContext} from'./App';
 import useTranslation from 'next-translate/useTranslation';
-import { useInView } from 'react-intersection-observer';
 import {motion} from 'framer-motion';
 import styled from 'styled-components';
 import { Element } from 'react-scroll';
+import {useIntersection} from '../helpers/intersectionObserver';
 
 const GitHubBackground = styled(Element)`
     padding: 85px 0;
@@ -39,10 +39,15 @@ const Button = styled.a`
 const GitHub = props => {
     const { t } = useTranslation('common');
     const {indexScroll} = useContext(GlobalContext);
-    const [ref, inView] = useInView({
-        threshold: 0.8,
-        triggerOnce: true
+    const [inView, setIsInView] = useState(false);
+    const ref = useRef();
+    useIntersection(ref, () => {
+        setIsInView(true);
+    }, {
+        rootMargin: '0px',
+        threshold: '0.8'
     });
+
     const fadeLeft = indexScroll ? null : {
         initial: {opacity: 0, x: -250},
         get animate() {

@@ -1,12 +1,15 @@
 import {useState, memo, useEffect, useRef} from 'react';
 import NavToogle from './NavToogle';
+import {GlobalContext} from'./App';
 import Link from 'next/link';
+import {useContext} from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import {Nav, NavContainer, NavBrand, NavRight, Languages, Language} from '../styles/navbarStyles';
 import { animateScroll as scroll } from 'react-scroll';
 
 function Navbar(){
-    const [isActive, setActive] = useState(false);
+    const {indexScroll} = useContext(GlobalContext);
+    const [isActive, setActive] = useState(indexScroll?.yPos >= 80);
     const { lang } = useTranslation();
     const navRef = useRef();
 
