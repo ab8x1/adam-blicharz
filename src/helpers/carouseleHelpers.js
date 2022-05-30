@@ -9,11 +9,12 @@ export function followScroll(element, sortedSizes, scrollToDot, currentXPosition
 //detect when user stopped scrolling
 function onScrollEnd(target, sortedSizes, scrollToDot, currentXPosition){
     clearTimeout( isScrolling );
-     //if scroll was performed with arrows or dot's don't watch for scrollEnd
-     if(target.scrollLeft !== currentXPosition)
-     isScrolling = setTimeout(function() {
-        const forth = target.scrollLeft > currentXPosition;
-        getNearestDot(target, sortedSizes, forth, scrollToDot);
+    isScrolling = setTimeout(function() {
+        const {scrollLeft} = target;
+        if(Math.round(scrollLeft) !== currentXPosition.val){ //if scroll was performed with arrows or dot's don't watch for scrollEnd
+            const forth = scrollLeft > currentXPosition.val;
+            getNearestDot(target, sortedSizes, forth, scrollToDot);
+        }
     }, 200);
 }
 

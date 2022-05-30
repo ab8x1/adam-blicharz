@@ -4,7 +4,7 @@ import Image from 'next/image';
 import {followScroll, getContentWidth} from '../helpers/carouseleHelpers';
 import ItemsMemo from '../components/ItemsMemo';
 
-let currentXPosition=0, currentDot={val:0};
+let currentXPosition={val: 0}, currentDot={val:0};
 
 function Carousel({items, sizes, indexScroll, setIndexScroll}){
     const contentRef = useRef(); //items container
@@ -18,7 +18,7 @@ function Carousel({items, sizes, indexScroll, setIndexScroll}){
         const {current} = contentRef;
         current.addEventListener('scroll', element => followScroll(element, sortedSizes, scrollToDot, currentXPosition));
         current.style.scrollBehavior = "auto";
-        const lastForth = returnedFrom !== lastCurrentDot ? returnedFrom > lastCurrentDot : lastSavedDir;
+        const lastForth = returnedFrom !== lastCurrentDot ? returnedFrom > lastCurrentDot : lastSavedDir; //last direction of slides
         currentDot.lastForthDirection = lastForth;
         scrollToDot({target: {value: returnedFrom || 0}, initial: true, lastForth});
         current.style.scrollBehavior = "smooth";
@@ -37,7 +37,7 @@ function Carousel({items, sizes, indexScroll, setIndexScroll}){
         let newPosition = dot * contentWidth;
         const maxLeft = scrollWidth - offsetWidth;
         const newIsInView = newPosition >= projectsContainer.scrollLeft && ((newPosition+contentWidth) <= (projectsContainer.scrollLeft + offsetWidth));
-        if(!newIsInView || initial){
+        if(!newIsInView || initial){ //scroll only if new Project isn't in viewport
             if(!initial){
                 if(dot > activeDot && columns > 1) newPosition = newPosition - contentWidth;
             }
@@ -46,8 +46,8 @@ function Carousel({items, sizes, indexScroll, setIndexScroll}){
             }
             newPosition = newPosition < maxLeft ? newPosition : maxLeft;
             projectsContainer.scrollLeft = newPosition;
-            currentXPosition = newPosition;
         }
+        currentXPosition.val = newPosition;
         currentDot.val = dot;
         if(dot !== activeDot) currentDot.lastForthDirection = dot > activeDot;
         setActiveBack(dot > 0);
