@@ -11,7 +11,15 @@ export default function Home({allProjects}) {
     <>
       <Head>
           <title>Adam Blicharz</title>
-          <meta name="description" content="Adam Blicharz - Fullstack JavaScript Developer. Szczecin, Police"/>
+          <meta name="description" content="Adam Blicharz - Fullstack JavaScript Developer. Szczecin, Police."/>
+          <meta property="og:image" content="https://adamblicharz.com/social_card_photo.png" />
+          <meta name="twitter:image" content="https://adamblicharz.com/social_card_photo.png" />
+          <meta name="twitter:card" content="summary_large_image"/>
+          <meta name="twitter:site" content="@yourwebsite"/>
+          <meta name="twitter:creator" content="@BntloveX"/>
+          <meta name="twitter:title" content="Adam Blicharz - Fullstack JS Developer" />
+          <meta name="twitter:description" content="Adam Blicharz - Fullstack JavaScript Developer. Szczecin, Police." />
+          <meta name="twitter:image" content="https://adamblicharz.com/social_card_photo.png" />
       </Head>
       <Navbar/>
       <main>
