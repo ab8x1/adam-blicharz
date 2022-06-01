@@ -21,7 +21,7 @@ export const Title = styled.h2`
 
 export const Project = styled.div`
     display: grid;
-    grid-template-rows: 1fr 50px;
+    grid-template-rows: 1fr 80px;
     justify-items: flex-start;
     width: 100%;
     padding: 30px;
@@ -37,14 +37,16 @@ export const ProjectTitle = styled.div`
     align-items: center;
     overflow: hidden;
     margin: 0;
-    & h2{
-        margin: 10px 0;
+    @media(max-width: 767px){
+        & h2{
+            margin: 10px 0;
+        }
     }
 `;
 
 export const Button = styled.button`
     display: table;
-    margin: 0px 0;
+    margin: 15px 0;
     padding: 0 60px;
     background-color: rgb(56,72,92);
     border-radius: 10px;
