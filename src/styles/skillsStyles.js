@@ -7,7 +7,7 @@ export const SkillsContainer = styled(Element)`
     width: 100%;
     padding: 0 15px;
     background-color: transparent;
-    margin-top: -80px;
+    margin-top: 10px;
     @media(min-width: 768px){
         margin-top: 30px;
         padding: 50px 0 10px 0;
@@ -18,8 +18,6 @@ export const SkillsContent = styled(motion.div)`
     display: grid;
     grid-template-columns: 100fr;
     border-radius: 20px;
-    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
-    background-color: rgb(56, 72, 92);
     padding: 30px 0 40px 0;
     & div:nth-of-type(2){
         border: solid lightgray;
@@ -33,7 +31,7 @@ export const SkillsContent = styled(motion.div)`
     }
 `;
 
-export const Skill = styled.div`
+export const Skill = styled(motion.div)`
     width: 100%;
     height: 100%;
     padding: 12px 15px;
@@ -42,11 +40,11 @@ export const Skill = styled.div`
 
 export const Title = styled.div`
     font-size: 1.2rem;
-    margin: 10px;
+    margin: 10px 0 30px 0;
     & p{
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         font-weight: bold;
-        margin: 10px 0;
+        margin: 10px 0 20px 0;
     }
     & img{
         width: 64px;
@@ -56,5 +54,6 @@ export const Title = styled.div`
 
 export const Stack = styled.p`
     font-weight: bold;
-    padding: 10px 0;
+    padding: 15px 0;
+    font-size: 1.2rem;
 `;

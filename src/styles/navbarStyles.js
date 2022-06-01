@@ -2,17 +2,13 @@ import styled from 'styled-components';
 
 export const Nav = styled.nav`
     position: fixed;
-    ${({isActive}) => isActive && `
-        background: rgb(28, 39, 51);
-        border-bottom: 2px solid rgba(23, 33, 43, 0.4);
-    `};
+    background: rgb(28, 39, 51);
     z-index: 10;
     top: 0;
     left: 0;
     right: 0;
     color: white;
     user-select: none;
-    transition: background 0.3s ease-in-out;
 `;
 
 export const NavContainer = styled.div`

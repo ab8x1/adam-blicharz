@@ -68,7 +68,7 @@ export const Dots = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 40px 0 0 0;
+    margin: 30px 0 0 0;
 `;
 
 export const Dot = styled.button`

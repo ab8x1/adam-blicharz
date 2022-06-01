@@ -1,31 +1,68 @@
-import useTranslation from 'next-translate/useTranslation'
-import {useContext} from 'react';
+import {useContext, useRef, useState} from 'react';
 import {GlobalContext} from'./App';
+import IsMobile from './IsMobile';
 import {Skill, SkillsContent, SkillsContainer, Title, Stack} from '../styles/skillsStyles';
 import skills from '../consts/skills';
 import Image from 'next/image';
+import {useIntersection} from '../helpers/intersectionObserver';
+
+const stagger = {
+    hidden: {},
+    show: {
+        transition: {
+            delayChildren: 2.8,
+            staggerChildren: 0.5,
+        }
+    }
+}
 
 const animationVariants = {
     hidden: { opacity: 0, y: 200 },
-    visible: { opacity: 1, y: 0 }
+    show: {
+        y: 0,
+        opacity: 1,
+    }
 }
 
-const Skills = () => {
-    const { t } = useTranslation('common');
+const mobileTransition = {
+    type: "spring", damping: 10, stiffness: 70
+}
+
+const desktopTransition = {
+    type: "spring", damping: 12, stiffness: 180
+}
+
+const Skills = ({isMobile}) => {
     const {indexScroll} = useContext(GlobalContext);
+    const [visibleColumns, setVisibleColumns] = useState({0: false, 1: false, 2: false});
+    const refs = [useRef(), useRef(), useRef()];
+
+    refs.forEach((ref, i) => {
+        useIntersection(ref, () => {
+            if(isMobile && !indexScroll) setVisibleColumns(st => ({...st, [i]: true}));
+        }, {
+            rootMargin: '200px',
+            threshold: '0.2'
+        });
+    });
 
     return(
         <SkillsContainer name="skills">
             <SkillsContent
                 className="container"
-                initial = {indexScroll ? 'visible' : 'hidden'}
-                animate = "visible"
-                variants = { animationVariants }
-                transition = {{duration: 0.4, ease: "easeInOut", delay: 1}}
+                initial = {indexScroll ? 'show' : 'hidden'}
+                animate = "show"
+                variants = { stagger }
             >
                 {
-                    skills.map(({type, stack}) =>
-                        <Skill key={type}>
+                    skills.map(({type, stack}, i) =>
+                        <Skill
+                            animate={isMobile ? visibleColumns[i] ? 'show' : 'hidden' : undefined}
+                            initial={isMobile ? 'hidden' : undefined}
+                            key={type}
+                            variants={indexScroll ? null : animationVariants}
+                            transition={isMobile ? mobileTransition : desktopTransition}
+                            ref={refs[i]}>
                             <Title>
                                 <p>{type}</p>
                                 <Image src={`/${type}.png`} height={64} width={64}/>
@@ -35,7 +72,6 @@ const Skills = () => {
                                     <Stack key={tech}>{tech}</Stack>
                                 )
                             }
-                            [...]
                         </Skill>
                     )
                 }
@@ -44,4 +80,4 @@ const Skills = () => {
     )
 }
 
-export default Skills;
+export default IsMobile(Skills);

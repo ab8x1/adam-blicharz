@@ -27,7 +27,7 @@ export default function Home({allProjects}) {
           <AboutMe/>
         </section>
         <section>
-          <Skills/>
+        <Skills/>
         </section>
         <section>
           <Projects allProjects={allProjects}/>

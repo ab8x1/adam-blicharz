@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 export const Wrapper = styled(motion.div)`
     display: grid;
     grid-template-columns: 1fr;
-    padding: 10vh 0 10px 0;
+    padding: 12vh 0 10px 0;
     @media(min-width: 768px){
         grid-template-columns: 1fr 1fr;
         padding-top: 120px;
@@ -38,77 +38,38 @@ export const InfoText = styled.div`
         padding: 80px 0 100px 0;
     }
     @media(min-width: 1200px){
-        font-size: 2.8rem;
-        padding: 80px 0 150px 0;
+        font-size: 3.2rem;
+        padding: 140px 0;
     }
 `;
 
 export const VisualInfo = styled.div`
     display: flex;
-    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
 `;
 
-export const ImageConatiner = styled(motion.div)`
-    position: relative;
-    width: 100%;
-    min-height: 500px;
-    overflow: hidden;
-    border-radius: 80px 0;
-    margin-top: -120px;
-    & img{
-        position: relative!important;
-        display: block;
-    }
-    @media(min-width: 768px){
-        position: absolute;
-        top: 0;
-        right: 0;
-        max-height: 550px;
-        width: 37%;
-        margin: 0;
-        border-radius: 0 0 0 80px;
-    }
-    @media(min-width: 768px){
-        height: 700px;
-        max-height: 700px;
-    }
-    @media(min-width: 1921px){
-        max-width: 706px;
-        right: unset;
-        left: 40%;
-        transform: translateX(50%);
-    }
-`;
-
-export const StackContainer = styled.div`
+export const StackContainer = styled(motion.div)`
     position: relative;
     width: 245px;
     height: 240px;
     background: rgb(56,72,92);
     box-shadow: 0px 104px 224px rgba(0, 0, 0, 0.05);
     border-radius: 60px 30px;
-    margin: 35px auto 20px auto;
+    margin: 50px auto 10px auto;
     z-index: 1;
     @media(min-width: 768px){
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        left: -50px;
         width: 220px;
         margin: unset;
-        border-radius: 90px 60px;
     }
     @media(min-width: 992px){
         width: 300px;
         height: 300px;
+        border-radius: 140px 60px;
     }
     @media(min-width: 1200px){
-        width: 340px;
-        height: 330px;
-        left: -40px;
-    }
-    @media(min-width: 1350px){
-        left: 0;
+        width: 380px;
+        height: 360px;
     }
 `;
 
@@ -125,6 +86,7 @@ export const Tool = styled(motion.div)`
     cursor: default;
     @media(min-width: 992px){
         font-size: 15px;
+        padding: 12px 25px 12px 15px;
         &:hover{
             transform: scale(1.07);
             transition: transform 0.2s ease-in-out;

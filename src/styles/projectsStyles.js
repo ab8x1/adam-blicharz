@@ -4,21 +4,24 @@ import { Element } from 'react-scroll';
 export const ProjectsSection = styled(Element)`
     position: relative;
     margin: 0 auto;
-    padding: 50px 15px 10px 15px;
+    padding: 10px 15px 30px 15px;
     @media(min-width: 768px){
         padding: 80px 15px 65px 15px;
     }
 `;
 
 export const Title = styled.h2`
-    margin-bottom: 50px;
+    margin: 0 0 30px 0;
     text-align: center;
     font-size: 2rem;
+    @media(min-width: 768px){
+        margin-bottom: 50px;
+    }
 `;
 
 export const Project = styled.div`
     display: grid;
-    grid-template-rows: 1fr 90px;
+    grid-template-rows: 1fr 50px;
     justify-items: flex-start;
     width: 100%;
     padding: 30px;
@@ -34,11 +37,14 @@ export const ProjectTitle = styled.div`
     align-items: center;
     overflow: hidden;
     margin: 0;
+    & h2{
+        margin: 10px 0;
+    }
 `;
 
 export const Button = styled.button`
     display: table;
-    margin: 20px 0;
+    margin: 0px 0;
     padding: 0 60px;
     background-color: rgb(56,72,92);
     border-radius: 10px;

@@ -8,6 +8,7 @@ const App = ({children}) => {
     const [indexScroll, setIndexScroll] = useState();
     const router = useRouter();
     cacheScroll(router);
+
     return(
         <GlobalContext.Provider value={{ indexScroll, setIndexScroll }}>
             {children}

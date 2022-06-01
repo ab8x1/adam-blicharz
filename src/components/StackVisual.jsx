@@ -9,16 +9,12 @@ const fadeStack = {
     show: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5, ease: "easeInOut", delay: 1.4 }
-    }
-}
-
-const stagger = {
-    hidden: {},
-    show: {
         transition: {
-            delayChildren: 2,
-            staggerChildren: 0.3,
+            duration: 0.5,
+            ease: "easeInOut",
+            delay: 0.9,
+            delayChildren: 1.3,
+            staggerChildren: 0.2,
         }
     }
 }
@@ -28,18 +24,17 @@ const fadeTool = {
         opacity: 1,
         x: 0,
         y: 0,
-        transition: { duration: 0.5, ease: "easeInOut"}
+        transition: { duration: 0.4, ease: "easeInOut"}
     }
 }
 
 export default function StackVisual({disableAnimation}){
     return(
-        <motion.div className='relativeContainer' variants={fadeStack}>
-            <StackContainer>
+            <StackContainer variants={fadeStack} initial={disableAnimation ? 'show' : 'hidden'} animate='show'>
                 <Circle>
                     <Image src="/code.png" width={50} height={50} alt="harvest growth" priority={true} quality={60}/>
                 </Circle>
-                <motion.div className='relativeContainer' variants={stagger}  initial={disableAnimation ? 'show' : 'hidden'} animate='show'>
+                <div className='relativeContainer'>
                     {
                         projects.map(({name, imgUrl, dimensions, background, position, animation}) =>
                             <div key={name} style={{...position, position: 'absolute'}}>
@@ -59,8 +54,7 @@ export default function StackVisual({disableAnimation}){
                             </div>
                         )
                     }
-                </motion.div>
+                </div>
             </StackContainer>
-        </motion.div>
     )
 }

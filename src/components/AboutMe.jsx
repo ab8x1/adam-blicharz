@@ -1,8 +1,7 @@
 import {useContext} from 'react';
 import {GlobalContext} from'./App';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import {Wrapper, InfoText, ImageConatiner, VisualInfo} from '../styles/aboutMeStyles';
+import {Wrapper, InfoText, VisualInfo} from '../styles/aboutMeStyles';
 import StackVisual from './StackVisual';
 
 const stagger = {
@@ -24,14 +23,6 @@ const fadeText = {
     }
 }
 
-const fadePhoto = {
-    hidden: { opacity: 0 },
-    show: {
-        opacity: 1,
-        transition: { duration: 0.5, ease: "easeInOut"}
-    }
-}
-
 const AboutMe = () => {
     const {indexScroll} = useContext(GlobalContext);
     return(
@@ -49,9 +40,6 @@ const AboutMe = () => {
                 </div>
             </InfoText>
             <VisualInfo>
-                <ImageConatiner variants={fadePhoto}>
-                    <Image src="/me.jpg" priority layout="fill" objectFit="cover" objectPosition="center" alt="Adam Blicharz"/>
-                </ImageConatiner>
                 <StackVisual disableAnimation={indexScroll}/>
             </VisualInfo>
         </Wrapper>
