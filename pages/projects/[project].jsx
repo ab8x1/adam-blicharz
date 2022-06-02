@@ -49,7 +49,7 @@ const Project = ({name, description, url, stack, imgs, otherRoutes, order}) => {
           <BackButton onClick={handleBack}><img src="/back.png" alt=""/>{t('Return')}</BackButton>
           <Title>
             {name}
-            <ShowWebsite href={url} target="blank">
+            <ShowWebsite href={url} target={url !== "#" && '_blank'}>
               {t('CheckSite')}
               <img src="/www.png" alt=""/>
             </ShowWebsite>
