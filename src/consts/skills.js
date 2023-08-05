@@ -2,19 +2,19 @@ const skills = [
     {
         type: 'Frontend',
         stack: [
-            'React', 'NextJs', 'Material-UI', 'Styled components', 'JQuery'
+            'React', 'NextJs', 'TypeScript', 'Remix'
         ]
     },
     {
         type: 'Backend',
         stack: [
-            'NodeJs', 'Express', 'MongoDB', 'MySQL', 'Passport.js'
+            'NodeJs', 'Express', 'MongoDB', 'MySQL',
         ]
     },
     {
         type: 'DevOps',
         stack: [
-            'Ubuntu', 'NGINX', 'Digital Ocean', 'Google Analytics', 'Google Search Console'
+            'Ubuntu', 'NGINX', 'Digital Ocean', 'Google Analytics'
         ]
     }
 ] 
