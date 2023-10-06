@@ -14,7 +14,7 @@ export default function Info(){
     return(
         <section className={styles.infoSection}>
             <div className="container">
-                <Image src="/code.png" width={96} height={96} alt='code' style={{marginLeft:'-10px'}}/>
+                <Image src="/code.png" width={96} height={96} alt='code' style={{marginLeft:'-10px'}} priority/>
                 <h1 className={styles.title}>Hi, I&apos;m Adam.</h1>
                 <h2 className={styles.subTitle}>Fullstack JavaScript Web Developer</h2>
                 <div className={styles.skills}>
@@ -29,7 +29,7 @@ export default function Info(){
                     {
                         companies.map(({name, url, iconSize}) =>
                             <a href={url} target='_blank' key={name}>
-                                <Image src={`/companies/${name}.svg`} {...iconSize} alt={name}/>
+                                <Image src={`/companies/${name}.svg`} {...iconSize} alt={name} priority/>
                                 <span className='blank'>name</span>
                             </a>
                         )

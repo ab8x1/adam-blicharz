@@ -5,40 +5,40 @@ export default function Stack(){
 
     return(
         <section className={styles.stackSection}>
-            <div>
+            <div className={styles.stackColumn}>
                 <p className={styles.stackTitle}>
+                    <Image src="/stack/frontend.png" width={40} height={40} alt="frontend" priority/>
                     Frontend
-                    <Image src="/stack/Frontend.webp" width={40} height={40} alt="" />
                 </p>
                 <ul className={styles.stackList}>
-                    <li>React</li>
-                    <li>NextJs</li>
-                    <li>TypeScript</li>
-                    <li>Remix</li>
+                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> React</li>
+                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> NextJs</li>
+                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> TypeScript</li>
+                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> Remix</li>
                 </ul>
             </div>
-            <div>
+            <div className={styles.stackColumn}>
                 <p className={styles.stackTitle}>
+                    <Image src="/stack/backend.png" width={40} height={40} alt="backend" priority/>
                     Backend
-                    <Image src="/stack/Backend.webp" width={40} height={40} alt="" />
                 </p>
                 <ul className={styles.stackList}>
-                    <li>NodeJs</li>
-                    <li>Express</li>
-                    <li>MongoDB</li>
-                    <li>MySQL</li>
+                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> NodeJs</li>
+                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> Express</li>
+                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> MongoDB</li>
+                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> MySQL</li>
                 </ul>
             </div>
-            <div>
+            <div className={styles.stackColumn}>
                 <p className={styles.stackTitle}>
+                    <Image src="/stack/devOps.png" width={40} height={40} alt="devOps" priority/>
                     DevOps
-                    <Image src="/stack/DevOps.webp" width={40} height={40} alt="" />
                 </p>
                 <ul className={styles.stackList}>
-                    <li>Ubuntu</li>
-                    <li>NGINX</li>
-                    <li>Digital Ocean</li>
-                    <li>Google Analytics</li>
+                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> Ubuntu</li>
+                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> NGINX</li>
+                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> Digital Ocean</li>
+                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> Google Analytics</li>
                 </ul>
             </div>
         </section>

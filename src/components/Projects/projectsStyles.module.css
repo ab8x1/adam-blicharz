@@ -20,22 +20,22 @@
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    max-width: 400px;
-    padding: 30px 20px 40px 20px;
-    border-radius: 40px 0 40px 0;
-    border: 3px solid #0a032b;
+    max-width: 580px;
+    border-radius: 16px;
+    border: 1px solid #EAECF0;
+    background: #FFF;
 }
 
-.project img{
+.projectImg{
     width: 100%;
-    height: 'auto';
+    height: auto;
     border-radius: 15px;
 }
 
 .projectTitle{
     position: relative;
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     letter-spacing: 0.07rem;
     font-weight: 600;
     margin-top: 15px;
@@ -53,20 +53,27 @@
     background: linear-gradient(270deg, #13ADC7 0%, #6978D1 66.67%, #945DD6 100%);
 }
 
-.prijectContent{
+.projectContent{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
     margin-top: 30px;
+    padding: 32px;
+}
+
+.projectDescription{
     line-height: 1.6rem;
     flex: 1;
 }
 
 .projectButton{
-    display: table;
-    border-radius: 30px;
-    background: linear-gradient(270deg, #13ADC7 0%, #6978D1 66.67%, #945DD6 100%);
-    padding: 12px 50px;
-    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-weight: 600;
     margin-top: 20px;
+    font-size: 1.1rem;
     transition: transform 0.2s ease-in-out;
 }
 

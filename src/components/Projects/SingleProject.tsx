@@ -35,16 +35,22 @@ export default function SignleProject({icon, name, description, route} : Project
         >
             <Image
                 src={icon}
-                width={360}
-                height={202}
+                width={580}
+                height={326}
                 sizes="100vw"
                 alt='project img'
+                className={styles.projectImg}
             />
             <p className={styles.projectTitle}>{name}</p>
-            <p className={styles.prijectContent}>
-                { description.slice(0,250) }[...]
-            </p>
-            <Link href={`/projects/${route}`} className={styles.projectButton}>Details</Link>
+            <div className={styles.projectContent}>
+                <p className={styles.projectDescription}>
+                    { description.slice(0,250) }[...]
+                </p>
+                <Link href={`/projects/${route}`} className={styles.projectButton}>
+                    Details
+                    <Image src="/arrow-up-right.png" width={24} height={24} alt="arrow up right" />
+                </Link>
+            </div>
         </motion.div>
     )
 }

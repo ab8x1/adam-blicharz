@@ -1,40 +1,49 @@
 .stackSection{
     display: grid;
     grid-template-columns: 1fr;
-    margin: -120px auto 0 auto;
-    padding: 0 20px 60px 20px;
-    background-color: #FFF;
+    justify-items: center;
+    width: 100%;
+    margin: -120px 0 0 0;
+    gap: 32px;
+}
+
+.stackColumn{
+    background-color: #fff;
     border-radius: 20px;
-    gap: 30px;
-    border: 1px solid #e9e9ee;
+    width: 100%;
+    max-width: 380px;
+    border: 1px solid #EAECF0;
+    padding: 32px 32px 40px 32px;
 }
 
 .stackTitle{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    font-size: 1.8rem;
+    gap: 20px;
+    font-size: 1.4rem;
     font-weight: 600;
     text-align: center;
-    padding-top: 40px;
+    padding: 32px;
 }
 
 .stackList{
     list-style: none;
-    text-align: center;
 }
 
 .stackList li{
-    margin-top: 50px;
-    font-size: 1.5rem;
+    margin-top: 25px;
+    font-size: 1.2rem;
+    color: #475467;
+    gap: 12px;
 }
 
 /* Small Desktop */
 @media (min-width: 768px) {
     .stackSection{
         grid-template-columns: 1fr 1fr 1fr;
-        gap: 0;
+        gap: 30px;
     }
 }
 
