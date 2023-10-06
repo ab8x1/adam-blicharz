@@ -1,0 +1,105 @@
+.infoSection{
+  background: rgb(213,213,236);
+  background: linear-gradient(90deg, #d5d5ec 0%, #e0e0ec 50%, #e9e9ee 100%);
+  padding: 120px 0 150px 0;
+  margin-top: -90px;
+}
+
+.title{
+  font-size: 3.5rem;
+}
+
+.subTitle {
+  font-size: 2rem;
+  margin-top: 25px;
+}
+
+.skills{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  width: 100%;
+  max-width: 800px;
+  margin: 50px 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.3rem;
+}
+
+.skill{
+  background-color: white;
+  padding: 15px 50px;
+  border-radius: 7px;
+  text-align: center;
+  /* border: 3px solid #a8a8ca; */
+  border: 3px solid #0a032b;
+}
+
+.line{
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.line::before{
+  content: '';
+  flex: 1;
+  border-top: 1px solid #9E9E9E;
+  margin-right: 20px;
+}
+
+.line::after{
+  content: '';
+  flex: 1;
+  border-top: 1px solid #9E9E9E;
+  margin-left: 20px;
+}
+
+.comapnies{
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 50px;
+  filter: grayscale(100%);
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+
+}
+
+
+/* Ipads*/
+@media (min-width: 481px) {
+  .skills{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Small Desktop */
+@media (min-width: 768px) {
+  .skills{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Medium Desktop */
+@media (min-width: 991px){
+  .title{
+    font-size: 4rem;
+  }
+
+  .subTitle {
+    font-size: 2.5rem;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1120px){
+
+
+}
+

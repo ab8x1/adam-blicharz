@@ -1,0 +1,46 @@
+.stackSection{
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: -120px auto 0 auto;
+    padding: 0 20px 60px 20px;
+    background-color: #FFF;
+    border-radius: 20px;
+    gap: 30px;
+    border: 1px solid #e9e9ee;
+}
+
+.stackTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.stackList{
+    list-style: none;
+    text-align: center;
+}
+
+.stackList li{
+    margin-top: 50px;
+    font-size: 1.5rem;
+}
+
+/* Small Desktop */
+@media (min-width: 768px) {
+    .stackSection{
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0;
+    }
+}
+
+/* Medium Desktop */
+@media (min-width: 991px) {
+    .stackSection{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

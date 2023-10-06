@@ -1,0 +1,21 @@
+#navbar{
+    justify-content: space-between;
+}
+
+#logo{
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 7px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.icons{
+    gap: 15px;
+}
+
+.icons img{
+    border-radius: 5px;
+}
