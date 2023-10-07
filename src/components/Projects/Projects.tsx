@@ -24,7 +24,7 @@ export default async function Projects(){
 
     return(
         <section className={styles.projectsSection}>
-            <p className={styles.projectsTitle}>Current Projects</p>
+            <p className={styles.projectsTitle}>Some of my work</p>
             <div className={styles.projects}>
                 {
                     projects.map(project =>

@@ -7,7 +7,7 @@ export default function Stack(){
         <section className={styles.stackSection}>
             <div className={styles.stackColumn}>
                 <p className={styles.stackTitle}>
-                    <Image src="/stack/frontend.png" width={40} height={40} alt="frontend" priority/>
+                    <Image className={styles.stackIcon} src="/stack/frontend.png" width={40} height={40} alt="frontend" priority/>
                     Frontend
                 </p>
                 <ul className={styles.stackList}>
@@ -19,7 +19,7 @@ export default function Stack(){
             </div>
             <div className={styles.stackColumn}>
                 <p className={styles.stackTitle}>
-                    <Image src="/stack/backend.png" width={40} height={40} alt="backend" priority/>
+                    <Image className={styles.stackIcon} src="/stack/backend.png" width={40} height={40} alt="backend" priority/>
                     Backend
                 </p>
                 <ul className={styles.stackList}>
@@ -31,7 +31,7 @@ export default function Stack(){
             </div>
             <div className={styles.stackColumn}>
                 <p className={styles.stackTitle}>
-                    <Image src="/stack/devOps.png" width={40} height={40} alt="devOps" priority/>
+                    <Image className={styles.stackIcon} src="/stack/devOps.png" width={40} height={40} alt="devOps" priority/>
                     DevOps
                 </p>
                 <ul className={styles.stackList}>

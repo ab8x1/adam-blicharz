@@ -58,7 +58,6 @@
     flex-direction: column;
     align-items: flex-start;
     flex: 1;
-    margin-top: 30px;
     padding: 32px;
 }
 
@@ -85,6 +84,7 @@
 @media (min-width: 768px) {
     .projects{
         grid-template-columns: 1fr 1fr;
+        gap: 60px;
     }
 }
 
