@@ -48,6 +48,12 @@ a {
   margin: 0 auto;
 }
 
+.sectionTitle{
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
 /* Ipads */
 @media (min-width: 481px) {
   .container{

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 
 let listenerCallbacks = new WeakMap();
 let defaultObserver;
+let addedToObserver = [];
 
 function handleIntersections(entries, observer) {
   entries.forEach(entry => {
@@ -29,9 +30,9 @@ function getIntersectionObserver() {
 
 export default function useIntersection(elem, callback) {
     useEffect(() => {
-        const target = elem.current;
-        let observer = getIntersectionObserver();
-        listenerCallbacks.set(target, callback);
-        observer.observe(target);
+          const target = elem.current;
+          let observer = getIntersectionObserver();
+          listenerCallbacks.set(target, callback);
+          observer.observe(target);
     }, [])
 }

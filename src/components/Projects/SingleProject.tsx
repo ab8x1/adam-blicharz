@@ -6,6 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Project } from './projectTypes'
 import useIntersection from '@/helpers/observe'
+import { hasHistory } from "../Navigation-Events/Navigation-Events"
 
 const animationVariants = {
     hidden: { opacity: 0, y: -100 },
@@ -20,14 +21,15 @@ const transition = {
 }
 
 export default function SignleProject({icon, name, description, route} : Project){
-    const [inView, setInView] = useState(false);
+    const homepageSeen = hasHistory('/');
+    const [inView, setInView] = useState(homepageSeen);
     const ref: any = useRef();
     useIntersection(ref, () => setInView(true));
 
     return(
         <motion.div
             animate={inView ? "show" : "hidden"}
-            initial="hidden"
+            initial={homepageSeen ? "show" : "hidden"}
             variants={animationVariants}
             transition={transition}
             className={styles.project}
