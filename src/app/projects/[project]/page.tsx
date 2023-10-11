@@ -1,6 +1,7 @@
 import Project from "@/components/Project";
 import { performRequest } from "@/lib/datocms";
 import { ProjectType } from "@/components/Project/projectTypes";
+import {notFound} from "next/navigation"
 
 export async function generateStaticParams() {
     let { allProjects } : { allProjects: {project: string}[]} = await performRequest({
@@ -35,7 +36,7 @@ async function getProject(params : {project: string}) {
         }`
     });
 
-    if(!project) throw new Error('Project not found');
+    if(!project) notFound();
 
     return project
 }
