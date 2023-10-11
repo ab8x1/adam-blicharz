@@ -1,7 +1,8 @@
 import styles from './stackStyles.module.css';
 import Image from 'next/image';
+import { StackProps } from './stackTypes';
 
-export default function Stack(){
+export default function Stack({frontend, backend, devops} : StackProps){
 
     return(
         <section className={styles.stackSection}>
@@ -11,10 +12,11 @@ export default function Stack(){
                     Frontend
                 </p>
                 <ul className={styles.stackList}>
-                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> React</li>
-                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> NextJs</li>
-                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> TypeScript</li>
-                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> Remix</li>
+                    {
+                        frontend.map(item =>
+                            <li key={item} className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> {item}</li>
+                        )
+                    }
                 </ul>
             </div>
             <div className={styles.stackColumn}>
@@ -23,10 +25,11 @@ export default function Stack(){
                     Backend
                 </p>
                 <ul className={styles.stackList}>
-                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> NodeJs</li>
-                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> Express</li>
-                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> MongoDB</li>
-                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> MySQL</li>
+                    {
+                        backend.map(item =>
+                            <li key={item} className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> {item}</li>
+                        )
+                    }
                 </ul>
             </div>
             <div className={styles.stackColumn}>
@@ -35,10 +38,11 @@ export default function Stack(){
                     DevOps
                 </p>
                 <ul className={styles.stackList}>
-                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> Ubuntu</li>
-                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> NGINX</li>
-                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> Digital Ocean</li>
-                    <li className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> Google Analytics</li>
+                    {
+                        devops.map(item =>
+                            <li key={item} className='alignY'> <Image src="/check.svg" width={24} height={24} alt='check' /> {item}</li>
+                        )
+                    }
                 </ul>
             </div>
         </section>

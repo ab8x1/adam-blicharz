@@ -1,13 +1,13 @@
-.projectsSection{
+.thinProjectsSection{
     margin-top: 100px;
 }
 
-.projectsTitle{
+.thinProjectsTitle{
     font-size: 1.8rem;
     font-weight: 600;
 }
 
-.projects{
+.thinProjects{
     display: grid;
     grid-template-columns: 1fr;
     gap: 50px;
@@ -15,7 +15,7 @@
     margin-top: 50px;
 }
 
-.project{
+.thinProject{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -26,13 +26,13 @@
     background: #FFF;
 }
 
-.projectImg{
+.thinProjectImg{
     width: 100%;
     height: auto;
     border-radius: 15px;
 }
 
-.projectTitle{
+.thinProjectTitle{
     position: relative;
     width: 100%;
     font-size: 1.8rem;
@@ -43,7 +43,7 @@
     text-align: center;
 }
 
-.projectTitle::before{
+.thinProjectTitle::before{
     content: '';
     position: absolute;
     left: 0;
@@ -53,7 +53,7 @@
     background: linear-gradient(270deg, #13ADC7 0%, #6978D1 66.67%, #945DD6 100%);
 }
 
-.projectContent{
+.thinProjectContent{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -61,12 +61,12 @@
     padding: 32px;
 }
 
-.projectDescription{
+.thinProjectDescription{
     line-height: 1.6rem;
     flex: 1;
 }
 
-.projectButton{
+.thinProjectButton{
     display: flex;
     align-items: center;
     gap: 8px;
@@ -76,13 +76,13 @@
     transition: transform 0.2s ease-in-out;
 }
 
-.projectButton:hover{
+.thinProjectButton:hover{
     transform: scale(1.03);
 }
 
 /* Small Desktop */
 @media (min-width: 768px) {
-    .projects{
+    .thinProjects{
         grid-template-columns: 1fr 1fr;
         gap: 60px;
     }

@@ -6,7 +6,7 @@ export default function Footer(){
 
     return(
         <footer className={footerStyles.footer}>
-            <p className="sectionTitle">Let's chat!</p>
+            <p className="sectionTitle">Let&apos;s chat!</p>
             <div className={`alignY ${navStyles.icons}`}>
                 <a href="https://twitter.com/a_b8x1" target="_blank">
                     <Image src="/socials/twitter.svg" width={35} height={35} alt="twitter"/>

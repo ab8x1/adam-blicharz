@@ -1,4 +1,4 @@
-export type Project = {
+export type ThinProjectType = {
     order: number,
     name: string,
     route: string,

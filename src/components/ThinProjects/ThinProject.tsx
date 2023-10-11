@@ -1,10 +1,10 @@
 'use client'
 import { motion } from "framer-motion"
 import { useRef, useState } from 'react'
-import styles from './projectsStyles.module.css'
+import styles from './thinProjectsStyles.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Project } from './projectTypes'
+import { ThinProjectType } from './thinProjectsTypes'
 import useIntersection from '@/helpers/observe'
 import { hasHistory } from "../Navigation-Events/Navigation-Events"
 
@@ -20,7 +20,7 @@ const transition = {
     type: "spring", damping: 12, stiffness: 200
 }
 
-export default function SignleProject({icon, name, description, route} : Project){
+export default function ThinProject({icon, name, description, route} : ThinProjectType){
     const homepageSeen = hasHistory('/');
     const [inView, setInView] = useState(homepageSeen);
     const ref: any = useRef();
@@ -32,7 +32,7 @@ export default function SignleProject({icon, name, description, route} : Project
             initial={homepageSeen ? "show" : "hidden"}
             variants={animationVariants}
             transition={transition}
-            className={styles.project}
+            className={styles.thinProject}
             ref={ref}
         >
             <Image
@@ -41,14 +41,14 @@ export default function SignleProject({icon, name, description, route} : Project
                 height={326}
                 sizes="100vw"
                 alt='project img'
-                className={styles.projectImg}
+                className={styles.thinProjectImg}
             />
-            <p className={styles.projectTitle}>{name}</p>
-            <div className={styles.projectContent}>
-                <p className={styles.projectDescription}>
+            <p className={styles.thinProjectTitle}>{name}</p>
+            <div className={styles.thinProjectContent}>
+                <p className={styles.thinProjectDescription}>
                     { description.slice(0,250) }[...]
                 </p>
-                <Link href={`/projects/${route}`} className={styles.projectButton}>
+                <Link href={`/projects/${route}`} className={styles.thinProjectButton}>
                     Details
                     <Image src="/arrow-up-right.png" width={24} height={24} alt="arrow up right" />
                 </Link>
