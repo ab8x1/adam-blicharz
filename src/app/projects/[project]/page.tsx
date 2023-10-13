@@ -10,7 +10,7 @@ export async function generateStaticParams() {
                 project: route
             }
         }`
-      });
+    });
     return allProjects;
 }
 
@@ -35,7 +35,6 @@ async function getProject(params : {project: string}) {
               }
         }`
     });
-
     if(!project) notFound();
 
     return project
