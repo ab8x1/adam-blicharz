@@ -6,8 +6,8 @@ export async function GET(request: NextRequest) {
   const token = request.nextUrl.searchParams.get('token');
 
   if(token === process.env.REVALIDATE_TOKEN){
+      revalidatePath('/', 'page');
       revalidatePath('/projects/[project]', 'page');
-      revalidatePath('/');
       return Response.json({ revalidated: true, now: Date.now() })
   }
   else{

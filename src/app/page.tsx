@@ -3,6 +3,8 @@ import Figma from "@/components/Figma"
 import Stack from "@/components/Stack"
 import ThinProjects from "@/components/ThinProjects"
 import Footer from "@/components/Footer"
+import { ThinProjectType } from "@/components/ThinProjects/thinProjectsTypes"
+import { performRequest } from "@/lib/datocms"
 
 const stack = {
   frontend: [
@@ -16,7 +18,23 @@ const stack = {
   ]
 }
 
-export default function Home() {
+async function getThinProjects() {
+  let { allProjects } : { allProjects: ThinProjectType[] } = await performRequest({
+      query: `query MyQuery {
+        allProjects(filter: {}, locale: en) {
+          order
+          name
+          route
+          description
+          icon
+        }
+      }`
+    });
+    return allProjects.sort((a, b) => a.order - b.order);
+}
+
+export default async function Home() {
+  const thinProjects = await getThinProjects();
   return (
     <>
       <Info/>
@@ -25,7 +43,7 @@ export default function Home() {
           <Stack {...stack}/>
         </div>
         <Figma/>
-        <ThinProjects/>
+        <ThinProjects thinProjects={thinProjects}/>
         <Footer/>
       </div>
     </>
