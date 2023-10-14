@@ -8,6 +8,9 @@ export async function GET(request: NextRequest) {
   if(token === process.env.REVALIDATE_TOKEN){
       revalidatePath('/', 'page');
       revalidatePath('/projects/[project]', 'page');
+      console.log('**************************************');
+      console.log('Homepage and projects data revalidated');
+      console.log('**************************************');
       return Response.json({ revalidated: true, now: Date.now() })
   }
   else{
