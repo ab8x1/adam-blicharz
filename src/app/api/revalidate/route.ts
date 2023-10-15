@@ -2,7 +2,7 @@
 import { revalidatePath } from 'next/cache'
 import { NextRequest } from 'next/server'
 
-export async function GET(request: NextRequest) {
+const handleRevalidateRequest = (request: NextRequest) => {
   const token = request.nextUrl.searchParams.get('token');
 
   if(token === process.env.REVALIDATE_TOKEN){
@@ -20,4 +20,12 @@ export async function GET(request: NextRequest) {
         message: 'Unauthorized',
     })
   }
+}
+
+export async function GET(request: NextRequest) {
+  handleRevalidateRequest(request);
+}
+
+export async function POST(request: NextRequest) {
+  handleRevalidateRequest(request);
 }
