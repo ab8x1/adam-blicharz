@@ -23,9 +23,9 @@ const handleRevalidateRequest = (request: NextRequest) => {
 }
 
 export async function GET(request: NextRequest) {
-  handleRevalidateRequest(request);
+  return handleRevalidateRequest(request);
 }
 
 export async function POST(request: NextRequest) {
-  handleRevalidateRequest(request);
+  return handleRevalidateRequest(request);
 }
