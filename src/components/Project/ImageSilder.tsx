@@ -26,18 +26,18 @@ export default function ImageSlider({project} : {
                 onSlideChange={() => console.log('slide change')}
                 onSwiper={(swiper) => console.log(swiper)}
             >
-                <SwiperSlide>
-                    <Image src={`/projects/${project}_1.png`} width={1300} height={731} alt={`${project}-1`} className={styles.slide} quality={100}/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Image src={`/projects/${project}_2.png`} width={1300} height={731} alt={`${project}-2`} className={styles.slide} quality={100}/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Image src={`/projects/${project}_3.png`} width={1300} height={731} alt={`${project}-3`} className={styles.slide} quality={100}/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Image src={`/projects/${project}_4.png`} width={1300} height={731} alt={`${project}-4`} className={styles.slide} quality={100}/>
-                </SwiperSlide>
+                {
+                    [...Array(4)].map((_, i) =>
+                        <SwiperSlide>
+                            <Image
+                                src={`/projects/${project}_${i + 1}.png`} width={1300} height={731} alt={`${project}-${i + 1}`}
+                                className={styles.slide}
+                                quality={100}
+                                priority
+                            />
+                        </SwiperSlide>
+                    )
+                }
             </Swiper>
         </div>
     )
