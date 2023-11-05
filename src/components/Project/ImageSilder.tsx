@@ -27,16 +27,16 @@ export default function ImageSlider({project} : {
                 onSwiper={(swiper) => console.log(swiper)}
             >
                 <SwiperSlide>
-                    <Image src={`/projects/${project}-1.png`} width={1300} height={731} alt={`${project}-1`} className={styles.slide} quality={100}/>
+                    <Image src={`/projects/${project}_1.png`} width={1300} height={731} alt={`${project}-1`} className={styles.slide} quality={100}/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Image src={`/projects/${project}-2.png`} width={1300} height={731} alt={`${project}-2`} className={styles.slide} quality={100}/>
+                    <Image src={`/projects/${project}_2.png`} width={1300} height={731} alt={`${project}-2`} className={styles.slide} quality={100}/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Image src={`/projects/${project}-3.png`} width={1300} height={731} alt={`${project}-3`} className={styles.slide} quality={100}/>
+                    <Image src={`/projects/${project}_3.png`} width={1300} height={731} alt={`${project}-3`} className={styles.slide} quality={100}/>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <Image src={`/projects/${project}-4.png`} width={1300} height={731} alt={`${project}-4`} className={styles.slide} quality={100}/>
+                    <Image src={`/projects/${project}_4.png`} width={1300} height={731} alt={`${project}-4`} className={styles.slide} quality={100}/>
                 </SwiperSlide>
             </Swiper>
         </div>
