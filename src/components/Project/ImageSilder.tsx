@@ -28,9 +28,10 @@ export default function ImageSlider({project} : {
             >
                 {
                     [...Array(4)].map((_, i) =>
-                        <SwiperSlide>
+                        <SwiperSlide
+                            key={`${project}-${i + 1}`}
+                        >
                             <Image
-                                key={`${project}-${i + 1}`}
                                 src={`/projects/${project}_${i + 1}.png`} width={1300} height={731} alt={`${project}-${i + 1}`}
                                 className={styles.slide}
                                 quality={100}
