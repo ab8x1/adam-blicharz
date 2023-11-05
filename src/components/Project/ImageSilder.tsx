@@ -34,7 +34,6 @@ export default function ImageSlider({project} : {
                             <Image
                                 src={`/projects/${project}_${i + 1}.png`} width={1300} height={731} alt={`${project}-${i + 1}`}
                                 className={styles.slide}
-                                quality={100}
                                 priority
                             />
                         </SwiperSlide>
