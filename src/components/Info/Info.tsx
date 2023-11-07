@@ -14,7 +14,7 @@ export default function Info(){
     return(
         <section className={styles.infoSection}>
             <div className="container">
-                <Image src="/code.png" width={96} height={96} alt='code' style={{marginLeft:'-10px'}} priority/>
+                <Image src="/code.png" width={96} height={96} alt='code' style={{marginLeft:'-10px'}} priority quality={100}/>
                 <h1 className={styles.title}>Hi, I&apos;m Adam.</h1>
                 <h2 className={styles.subTitle}>Fullstack JavaScript Web Developer</h2>
                 <div className={styles.skills}>
@@ -23,7 +23,7 @@ export default function Info(){
                     <div className={styles.skill}>Devops</div>
                 </div>
                 <p className={styles.line}>
-                    I have contributed to
+                    Contributed to
                 </p>
                 <div className={`alignY ${styles.comapnies}`}>
                     {
