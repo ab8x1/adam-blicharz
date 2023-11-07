@@ -15,29 +15,31 @@ export async function generateStaticParams() {
 }
 
 async function getProject(params : {project: string}) {
-    const projectRoute  = params.project;
-    let { project } : { project: ProjectType } = await performRequest({
-        query: `query MyQuery {
-            project(
-                filter: {
-                  route: {
-                    eq: "${projectRoute}"
-                  }
-                },
-                locale: en
-              ) {
-                name
-                url
-                description
-                imgs
-                stack
-                icon
-              }
-        }`
-    });
-    if(!project) notFound();
+  console.log(params);
+  const projectRoute  = params.project;
+  let { project } : { project: ProjectType } = await performRequest({
+      query: `query MyQuery {
+          project(
+              filter: {
+                route: {
+                  eq: "${projectRoute}"
+                }
+              },
+              locale: en
+            ) {
+              order
+              name
+              url
+              description
+              imgs
+              stack
+              icon
+            }
+      }`
+  });
+  if(!project) notFound();
 
-    return project
+  return project
 }
 
   export default async function ProjectPage({ params } : {

@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ThinProjectType } from './thinProjectsTypes'
 import useIntersection from '@/helpers/observe'
-import { hasHistory } from "../Navigation-Events/Navigation-Events"
+import { hasHistory, LinkSaveScroll } from "../Navigation-Events/Navigation-Events"
 
 const animationVariants = {
     hidden: { opacity: 0, y: -100 },
@@ -49,10 +49,10 @@ export default function ThinProject({icon, name, description, route} : ThinProje
                 <p className={styles.thinProjectDescription}>
                     { description.slice(0,250) }[...]
                 </p>
-                <Link href={`/projects/${route}`} className={styles.thinProjectButton}>
+                <LinkSaveScroll href={`/projects/${route}`} className={styles.thinProjectButton}>
                     Details
                     <Image src="/arrow-up-right.png" width={24} height={24} alt="arrow up right" />
-                </Link>
+                </LinkSaveScroll>
             </div>
         </motion.div>
     )

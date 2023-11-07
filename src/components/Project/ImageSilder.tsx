@@ -23,8 +23,6 @@ export default function ImageSlider({project} : {
                 }}
                 speed={1000}
                 navigation={true}
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
             >
                 {
                     [...Array(4)].map((_, i) =>

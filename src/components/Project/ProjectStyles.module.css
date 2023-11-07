@@ -17,6 +17,15 @@
     height: auto;
 }
 
+.backButton {
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
 @media(max-width: 767px){
     .project{
         margin-top: 30px;
