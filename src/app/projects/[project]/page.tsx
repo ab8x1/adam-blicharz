@@ -15,7 +15,6 @@ export async function generateStaticParams() {
 }
 
 async function getProject(params : {project: string}) {
-  console.log(params);
   const projectRoute  = params.project;
   let { project } : { project: ProjectType } = await performRequest({
       query: `query MyQuery {

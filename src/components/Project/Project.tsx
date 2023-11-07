@@ -8,10 +8,15 @@ export default function Project({project} : {project: ProjectType}){
     const {name, description, stack} = project;
     return(
         <div className={styles.project}>
-            <h1 className="alignY" style={{gap: '10px'}}>
-                <BackButton/>
-                {name}
-            </h1>
+            <div className={`alignY ${styles.topBar}`}>
+                <h1 className="alignY" style={{gap: '3px'}}>
+                    <BackButton/>
+                    {name}
+                </h1>
+                <a className={styles.visitWebsite}>
+                    Visit {name}
+                </a>
+            </div>
             <p className={styles.description}>
                 {description}
             </p>
