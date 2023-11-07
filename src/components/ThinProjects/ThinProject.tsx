@@ -34,6 +34,7 @@ export default function ThinProject({icon, name, description, route} : ThinProje
             transition={transition}
             className={styles.thinProject}
             ref={ref}
+            style={!inView ? {pointerEvents: 'none', touchAction: 'none'} : undefined}
         >
             <Image
                 src={icon}
