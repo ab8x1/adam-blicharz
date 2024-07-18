@@ -35,7 +35,7 @@ export default function Stack({frontend, backend, devops} : StackProps){
             <div className={styles.stackColumn}>
                 <p className={styles.stackTitle}>
                     <Image className={styles.stackIcon} src="/stack/devOps.png" width={40} height={40} alt="devOps" priority/>
-                    DevOps
+                    Other
                 </p>
                 <ul className={styles.stackList}>
                     {

@@ -20,7 +20,6 @@ export default function Info(){
                 <div className={styles.skills}>
                     <div className={styles.skill}>Frontend</div>
                     <div className={styles.skill}>Backend</div>
-                    <div className={styles.skill}>Devops</div>
                 </div>
                 <p className={styles.line}>
                     Contributed to
